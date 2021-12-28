@@ -75,6 +75,7 @@ module.exports = {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'homecloud',   
+        accessToken: 'MC5ZY3BfakJJQUFDZ0FmUGl2.PH1pde-_vWNm77-977-9L--_vQLvv70b77-9Y--_vUNUcO-_vUMD77-977-977-977-977-9FO-_vWjvv70',
         customTypesApiToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibWFjaGluZTJtYWNoaW5lIiwiZGJpZCI6ImhvbWVjbG91ZC04MGQzM2Y5NC0yZGI1LTRjYzktYTU0ZC1mZmViNThlNjI1OWJfNCIsImRhdGUiOjE2NDA2NTk3MDgsImRvbWFpbiI6ImhvbWVjbG91ZCIsImlhdCI6MTY0MDY1OTcwOH0.F54AJbbl-6f4wFtvi7FpW5tPSssE4UoPmM_LshQ3QIw',
         schemas: {
           faq: require('./src/schemas/faq.json'),
