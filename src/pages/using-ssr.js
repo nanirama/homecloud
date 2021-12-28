@@ -12,7 +12,6 @@ const UsingSSR = ({ serverData }) => {
       <img
         style={{ width: "300px" }}
         alt="A random dog"
-        src={serverData.message}
       />
       <p>Welcome to a server side rendered page with a random dog photo</p>
       <p>
