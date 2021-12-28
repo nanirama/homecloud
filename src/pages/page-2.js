@@ -1,15 +1,21 @@
 import * as React from "react"
-import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import GlobalStyle from '../layout/globalStyles';
+
+import Herosection from "../components/Herosection";
+import Howitworksection from "../components/Howitworksection";
+import Servicesection from "../components/Servicesection";
+import Servicesection2 from "../components/Servicesection2";
+import Benefitssection from "../components/Benefitssection";
+import Featuressection from "../components/Featuressection";
+
 const SecondPage = () => (
   <Layout>
-    <Seo title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/">Go back to the homepage</Link>
+    <GlobalStyle />
+    <Howitworksection />
   </Layout>
 )
 

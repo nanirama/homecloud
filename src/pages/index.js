@@ -1,30 +1,30 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 
+import GlobalStyle from '../layout/globalStyles';
+
+import Herosection from "../components/Herosection";
+import Howitworksection from "../components/Howitworksection";
+import Servicesection from "../components/Servicesection";
+import Servicesection2 from "../components/Servicesection2";
+import Benefitssection from "../components/Benefitssection";
+import Featuressection from "../components/Featuressection";
+import DeserveSection from "../components/DeserveSection";
+import Testimonialsection from "../components/Testimonialsection";
+
 const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["auto", "webp", "avif"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link> <br />
-      <Link to="/using-ssr">Go to "Using SSR"</Link> <br />
-      <Link to="/using-dsg">Go to "Using DSG"</Link>
-    </p>
+  <Layout page="home">
+    <GlobalStyle />
+    <Herosection />
+    <Howitworksection />
+    <Servicesection />
+    {/* <Servicesection2 /> */}
+    <Benefitssection id="benefits" />
+    <Featuressection id="whatsincluded" />
+    <Testimonialsection />
+    <DeserveSection page="home" />
   </Layout>
 )
 
