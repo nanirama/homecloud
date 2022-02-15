@@ -1,42 +1,29 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types"
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { useStaticQuery, graphql, Link } from "gatsby";
-import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image";
+import { Link } from "gatsby";
+import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import SiteLogoSvg from "../assets/images/logos/logo.svg";
+import SiteLogoWhite from "../assets/images/logos/logo-white.svg";
+
 
 import styled from "styled-components";
 const SiteLogo = ({page, isStickyState})=>{
-
-  const { SiteLogo, LogoWhite } = useStaticQuery(
-    graphql`
-      query {
-        SiteLogo: file(relativePath: {eq: "logos/logo.png"}) {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 215)
-          }
-        }
-        LogoWhite: file(relativePath: {eq: "logos/logo-white.png"}) {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 215)
-          }
-        }
-      }
-    `
-  )
-
   if(!isStickyState && page === 'home')
   {
     return(
       <>
-      <GatsbyImage image={getImage(LogoWhite)} className="desktop-logo" />
-      <GatsbyImage image={getImage(SiteLogo)} className="mobile-logo"  />
+      <img src={SiteLogoWhite} className="desktop-logo" alt="" />
+      <img src={SiteLogoSvg} className="mobile-logo" alt="" />
+      {/* <GatsbyImage image={getImage(LogoWhite)} className="desktop-logo" />
+      <GatsbyImage image={getImage(SiteLogo)} className="mobile-logo"  /> */}
       </>      
     ) 
   }
   else
   {
     return(
-      <GatsbyImage image={getImage(SiteLogo)} />
+      <img src={SiteLogoSvg} />
     ) 
   }
 }
@@ -65,8 +52,7 @@ const Header = ({page}) => {
     {
       setStickyState(false) 
       headerContainer.classList.add('is-sticky-home');
-    }
-    
+    }    
   }
   else
   {
@@ -85,9 +71,12 @@ const Header = ({page}) => {
   <Wrapper className="header" page={page} isStickyState={isStickyState}>
      <Container className="headercontainer">
         <LogoAndLinks>
-           <Logo>      
+           <Logo> 
+           <Link to="/">     
              <SiteLogo page={page} isStickyState={isStickyState}/> 
+             </Link>
            </Logo>
+          
            <Nav>
               <StyledBurger open={open} onClick={() =>
                  setOpen(!open)}>
@@ -97,13 +86,13 @@ const Header = ({page}) => {
               </StyledBurger>
               <Ul open={open} isStickyState={isStickyState} page={page}>
                  <li>
-                 <AnchorLink href='#howitworks'>How it Works</AnchorLink>
+                 {page==='home' ? <AnchorLink href='#howitworks'>How it Works</AnchorLink> : <Link to='/#howitworks'>How it Works</Link>}
                  </li>
                  <li>
-                    <AnchorLink href='#benefits'>Benefits</AnchorLink>
+                 {page==='home' ? <AnchorLink href='#benefits'>Benefits</AnchorLink> : <Link to='/#benefits'>Benefits</Link>}
                  </li>
                  <li>
-                    <AnchorLink href='#whatsincluded'>What’s Included</AnchorLink>
+                    {page==='home' ? <AnchorLink href='#whatsincluded'>What’s Included</AnchorLink> : <Link to='/#whatsincluded'>What’s Included</Link>}
                  </li>
                  <li>
                     <Link to="/">
@@ -122,11 +111,12 @@ const Wrapper = styled.div`
 width: 100%;
 position:fixed;
 z-index:999;
-padding:30px 0;
+padding:15px 0;
 @media (max-width: 800px) {
   position:inherit;
   display:inline-block;
   padding:25px 0;  
+  min-height:70px;
 }
 ${({ isStickyState, page }) => !isStickyState && page==='home' ? `
     a{
@@ -136,10 +126,13 @@ ${({ isStickyState, page }) => !isStickyState && page==='home' ? `
       border:1px solid #fff !important;
     }
 ` : `
+box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
   a{
     color: #6C7884 !important;
   }
+  
 `};
+
 a {
   text-decoration: none;    
   position: relative;
@@ -147,6 +140,12 @@ a {
   font-size:14px;
   font-weight:600;
   letter-spacing: -0.07875px;
+  @media (min-width: 801px) and  (max-width:815px)  {
+    padding:0 17px;
+  }
+  &:hover{
+    color:#236DDE !important;
+  }
   @media (max-width: 800px) {
     font-size:16px;
     line-height:22px;
@@ -160,6 +159,8 @@ a {
 }
 `;
 const Container = styled.div`
+// content-visibility: auto;
+// contain-intrinsic-size: 500px;
   max-width: 1230px;
   margin: 0 auto;
   padding: 0px 15px;
@@ -167,25 +168,28 @@ const Container = styled.div`
 const LogoAndLinks = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   height: 100%;
 `;
 const Logo = styled.div`
   display: grid;
   place-items: center;
+  a{
+    margin-bottom:0 !important;
+  }
   .desktop-logo{
-    @media (min-width: 768px) {
+    @media (min-width: 801px) {
       display: block;
     } 
-    @media (max-width: 767px) {
+    @media (max-width: 800px) {
       display: none;
     } 
   }
   .mobile-logo{
-    @media (min-width: 768px) {
+    @media (min-width: 801px) {
       display: none;
     } 
-    @media (max-width: 767px) {
+    @media (max-width: 800px) {
       display: block;
     } 
   }
@@ -197,10 +201,10 @@ const Nav = styled.nav`
   z-index:999;
  `;
  const StyledBurger = styled.div`
-  width: 2rem;
-  height: 2rem;
+  width: 1.3rem;
+  height: 1.3rem;
   position: fixed;
-  top:24px;
+  top:26px;
   right: 15px;
   z-index: 20;
   display: none;
@@ -211,7 +215,7 @@ const Nav = styled.nav`
     flex-flow: column nowrap;
   }
   div {
-    width: 2rem;
+    width: 1.4rem;
     height: 0.2rem;
     background-color: ${({ open }) => open ? '#525E6B' : '#333D47'};
     border-radius: 0px;
@@ -233,6 +237,7 @@ const Ul = styled.ul`
   list-style: none;
   display: flex;
   flex-flow: row nowrap;
+  align-items:center;
   margin:0;
    @media (max-width: 800px) {
     flex-flow: column nowrap;
@@ -255,6 +260,7 @@ const Ul = styled.ul`
     border-radius:4px;
     margin-left: 20px;
     padding:13px 50px;
+    display:inline-block;
   }
 }
 @media (max-width: 800px) {

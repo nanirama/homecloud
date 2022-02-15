@@ -6,10 +6,8 @@ import BackgroundImage from 'gatsby-background-image'
 import styled from "styled-components";
 import { graphql } from "gatsby"
 
-
 import Seo from "../components/seo"
 import { Link } from "gatsby"
-import GlobalStyle from '../layout/globalStyles';
 
 const PageTemplate = (props)=>{
     const { data } = props
@@ -19,7 +17,6 @@ const PageTemplate = (props)=>{
     const bgImage = convertToBgImage(image)
   return(
     <Layout>
-       <GlobalStyle />
        <Wrapper>          
           <PageBanner>
           <BackgroundImage {...bgImage} preserveStackingContext className="pagebanner-bg">
@@ -65,7 +62,7 @@ query getPagesData($id: String!) {
 }
 `
 const Wrapper = styled.div`
-padding:90px 0 0 0;
+padding:80px 0 0 0;
 @media only screen and (max-width:800px){
 padding:0;
 }
@@ -73,8 +70,19 @@ padding:0;
 const PageBanner = styled.div`
 .pagebanner-bg{
   padding:40px 0;
-  @media only screen and (max-width:767px){
-    padding:70px 0;
+  // @media (max-width: 800px) {
+  //  padding:60px 0;
+  // }
+
+  @media only screen and (max-width:800px){
+    padding:60px 0;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    background: linear-gradient(-104.08deg, #DDE1E9 -77.81%, #62718D 97.9%);
+       &:before{
+         display:none;
+      background-image:none !important;
+      background: linear-gradient(104.08deg, #DDE1E9 -77.81%, #62718D 97.9%);
+    }
   }
 }
 // background: linear-gradient(104.71deg, #0047AD 34.23%, #0A5ACB 97.16%);
@@ -85,10 +93,11 @@ position:relative;
 p{
   color:#fff;
   margin:0;
-  @media only screen and (max-width:767px){
-    br{
-      display:none;
-    }
+  @media only screen and (min-width:992px){
+    max-width:420px;
+  }
+  @media only screen and (max-width:991px){
+    max-width:400px;
   }
 }
 `;
@@ -97,14 +106,14 @@ max-width: 830px;
 margin: 0 auto;
 padding: 0 15px;
 position: relative;
-.subtext{
-  @media (min-width: 992px) {
-    width:60% !important;
-  }
-  @media (max-width: 991px) {
-    width:95% !important;
-  }
-}
+// .subtext{
+//   @media (min-width: 992px) {
+//     width:60% !important;
+//   }
+//   @media (max-width: 991px) {
+//     width:95% !important;
+//   }
+// }
 `;
 const Heading = styled.h2`
 font-size:32px;
@@ -132,6 +141,7 @@ p{
 }
 ol{
   margin-bottom:20px;
+  padding-left:16px !important;
 }
 h5{
   margin:30px 0;

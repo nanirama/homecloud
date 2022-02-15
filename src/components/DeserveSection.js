@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
-const DeserveSection = () => {
+const DeserveSection = ({page}) => {
    const { DeserveImg} = useStaticQuery(
       graphql`
         query {
@@ -17,9 +17,8 @@ const DeserveSection = () => {
       `
     )
    
-
 return(
-   <DeserveBlk>
+   <DeserveBlk page={page}>
       <Container>
          <GatsbyImage image={getImage(DeserveImg)} />
          <h2>You Deserve More From Your Home
@@ -28,7 +27,7 @@ return(
          <Link to="/" className="btn">
          Digitize My Home</Link>
          <p>
-            <Link to="/">
+            <Link to="/pricing/">
             Starting at $399</Link>
          </p>
          <p>(for a 2,500 sq. ft. home) </p>
@@ -41,23 +40,24 @@ return(
 export default DeserveSection;  
 
 const Container = styled.div`
+// content-visibility: auto;
+// contain-intrinsic-size: 500px;
 max-width: 500px;
 margin: 0 auto;
-
+padding:0 15px;
 @media only screen and (max-width:767px){
    max-width: 100%;
 }
 `;
-
 const DeserveBlk = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
 text-align:center;
-padding: 96px 15px;
-background: #F6F7F9;
+padding: 96px 0px;
+background: ${props => props.page ? '#FFFFFF' : '#F6F7F9'};
 @media only screen and (max-width:767px){
-padding:50px 15px;
+padding:75px 0px;
 }
 h2{
    font-size:32px;
@@ -82,7 +82,4 @@ p a{
    text-decoration: underline; 
    margin-top:18px;
  }
-
 `;
-
-

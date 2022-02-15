@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import { useSwipeable } from "react-swipeable";
 
+import GlobalStyle from '../layout/globalStyles';
 import Header from "./header"
 import Footer from "./footer"
 
@@ -49,6 +50,7 @@ const Layout = ({ page, children }) => {
 
   return (
     <>
+      <GlobalStyle />
       <Header page={page} siteTitle={data.site.siteMetadata?.title || `Title`} />
 
         <main>{children}</main>

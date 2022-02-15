@@ -48,17 +48,16 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Get Home Cloud`,
+        short_name: `Get Home Cloud`,
         start_url: `/`,
-        background_color: `#663399`,
-        // This will impact how browsers show your PWA/website
-        // https://css-tricks.com/meta-theme-color-and-trickery/
-        // theme_color: `#663399`,
+        background_color: `#ffffff`,
         display: `minimal-ui`,
-        icon: `src/assets/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/logos/favicon.png`, // This path is relative to the root of the site.
       },
-      resolve: `gatsby-plugin-webfonts`,
+    },
+    {
+    resolve: `gatsby-plugin-webfonts`,
       options: {
         fonts: {
           google: [
@@ -69,7 +68,6 @@ module.exports = {
           ],
         },
       },
-
     },
     {
       resolve: 'gatsby-source-prismic',
@@ -84,6 +82,13 @@ module.exports = {
         },
         lang: '*',
       },
+    },
+    `gatsby-plugin-preload-fonts`,
+    {
+        resolve: `gatsby-plugin-polyfill-io`,
+        options: {
+          features: [`Array.prototype.map`, `fetch`]
+        },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

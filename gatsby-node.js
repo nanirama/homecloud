@@ -1,4 +1,5 @@
 const path = require("path")
+const { paginate } = require(`gatsby-awesome-pagination`);
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -12,8 +13,49 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      Blogs: allPrismicPost {
+        edges {
+          node {
+            uid
+            id
+          }
+        }
+      }
   }
 `)
+const DEFAULT_BLOG_BASE_PATH = '/blog';
+const DEFAULT_BLOG_POSTS_PER_PAGE = 60;
+
+const basePath = DEFAULT_BLOG_BASE_PATH;
+const blogs = data.Blogs.edges;
+
+const templatesDir = path.resolve(__dirname, './src/templates');
+const postsPerPage = DEFAULT_BLOG_POSTS_PER_PAGE; 
+    paginate({
+      createPage,
+      items: blogs,
+      itemsPerPage: postsPerPage,
+      itemsPerFirstPage: postsPerPage + 2,
+      pathPrefix: basePath,
+      component: path.resolve(templatesDir, 'BlogListTemplate.js'),
+      context: {
+        basePath,
+        paginationPath: basePath
+      },
+    });
+
+    blogs.forEach(({ node }) => {     
+      let blogURL = `${basePath}/${node.uid}`;
+  
+      createPage({
+        path: blogURL,
+        component: path.resolve(templatesDir, 'BlogTemplate.js'),
+        context: {
+          uid: node.uid,
+          basePath,
+        },
+      });
+    })
 
 data.Pages.edges.forEach(({ node }) => { 
   console.log('Page id', node.uid)     

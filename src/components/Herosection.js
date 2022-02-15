@@ -1,14 +1,33 @@
 import React, {useState} from "react"
 import styled from "styled-components";
-import { Link } from "gatsby"
-import img from '../assets/images/hero-banner.jpg';
+import { useStaticQuery, graphql, Link } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
+import { convertToBgImage } from "gbimage-bridge"
+import BackgroundImage from 'gatsby-background-image'
+
+import Layout from "../components/layout"
+
 
 import ModalBoxContent from "./ModalBoxContent";
 
 const Hero = () => {
+  const { HeroBanner } = useStaticQuery(
+    graphql`
+      query {
+        HeroBanner: file(relativePath: {eq: "hero-banner.jpg"}) {
+          childImageSharp {
+            gatsbyImageData(layout: FULL_WIDTH)
+          }
+        }
+      }
+    `
+  )
+  const image = getImage(HeroBanner)
+  const bgImage = convertToBgImage(image)
   const [modalShow, setModalShow] = useState(false);
   return(
   <Wrapper>
+    <BackgroundImage {...bgImage} preserveStackingContext className="herobanner-bg">
      <BannerText>
         <Container>
            <Text>
@@ -21,11 +40,12 @@ const Hero = () => {
                            >Digitize My Home</Button>
            </Text>
         </Container>
-     </BannerText>
-     <ModalBoxContent
+     </BannerText>     
+      </BackgroundImage>  
+      <ModalBoxContent
           show={modalShow}
           onHide={() => setModalShow(false)}
-      />    
+      />  
   </Wrapper>
   );
   };
@@ -33,40 +53,32 @@ export default Hero;
 const Button = styled.button`
 `;
 const Wrapper = styled.div`
-background-image: url(${img});
-background-position:center;
-background-repeat:no-repeat;
-background-size: cover;
-min-height:800px;
+content-visibility: auto;
+contain-intrinsic-size: 500px;
+.herobanner-bg{
+  background-position:center;
+  background-repeat:no-repeat;
+  background-size: cover;
+  min-height:800px;
+  @media (max-width: 800px) {
+    min-height:500px;
+  }
+  @media (max-width: 767px) {
+    min-height:300px;
+    margin-bottom:180px;
+  }
+  @media (min-width: 801px) {
+  &:before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0) 100%);
+    width:100%;
+    height:13%;
+  }
+}
 position:relative;
-@media (max-width: 800px) {
-  min-height:500px;
-}
-
-@media (max-width: 767px) {
-  min-height:300px;
-  margin-bottom:180px;
-}
-@media (min-width: 801px) {
-&:before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  background: linear-gradient(180deg,
-  
-  
-  
-  
-  
-  
-  
-  
-  
-   rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0) 100%);
-  width:100%;
-  height:13%;
-}
 }
 `;
 const Container = styled.div`

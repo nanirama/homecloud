@@ -2,62 +2,57 @@ import React, { useState } from "react"
 import styled from "styled-components";
 import Accordion from 'react-bootstrap/Accordion'
 import { useStaticQuery, graphql } from "gatsby"
-
 // import { StaticImage } from "gatsby-plugin-image";
 import img from '../../assets/images/faq-banner.png';
-
 import { Link } from "gatsby";
-
 const FaqSection = () => {
-   const { FaqData } = useStaticQuery(
-      graphql`
-        query {
-         FaqData : allPrismicFaq {
-            edges {
-              node {
-                uid
-                data {
-                  answer {
-                    html
-                    text
-                  }
-                  question {
-                    html
-                    text
-                  }
-                }
-              }
-            }
-          }
-        }
-      `
-    )
-
-  console.log('All Data', FaqData)
-  
-  const [activeEventKey, setActiveEventKey] = useState(null);
-  const [activeIndexKey, setActiveIndexKey] = useState(0);
-  const onClickHandler = (val)=>{
-      if(val!==activeIndexKey)
-      {
-          setActiveEventKey(val)
-          setActiveIndexKey(val)
-      }
-      else
-      {
-          if(activeEventKey===activeIndexKey)
-          {
-              setActiveEventKey(null)   
-          }
-          else
-          {
-              setActiveEventKey(val)
-              setActiveIndexKey(val)
-          }    
-      }             
-  }
-  return(
-  <Wrapper>
+const { FaqData } = useStaticQuery(
+graphql`
+query {
+FaqData : allPrismicFaq {
+edges {
+node {
+uid
+data {
+answer {
+html
+text
+}
+question {
+html
+text
+}
+}
+}
+}
+}
+}
+`
+)
+console.log('All Data', FaqData)
+const [activeEventKey, setActiveEventKey] = useState(null);
+const [activeIndexKey, setActiveIndexKey] = useState(0);
+const onClickHandler = (val)=>{
+if(val!==activeIndexKey)
+{
+setActiveEventKey(val)
+setActiveIndexKey(val)
+}
+else
+{
+if(activeEventKey===activeIndexKey)
+{
+setActiveEventKey(null)   
+}
+else
+{
+setActiveEventKey(val)
+setActiveIndexKey(val)
+}    
+}             
+}
+return(
+<Wrapper>
    <Banner>
       <Container>
          <h1>FAQ</h1>
@@ -75,19 +70,19 @@ const FaqSection = () => {
       <FaqItem>
          <Accordion>
             { FaqData && FaqData.edges.map(({node}, index) => {
-               return(
-                  <Accordion.Item eventKey={index}>
-                     <Accordion.Header>
-                        <div dangerouslySetInnerHTML={{ __html: node.data.question.html }}></div>
-                     </Accordion.Header>
-                     <Accordion.Body>
-                        <div dangerouslySetInnerHTML={{ __html: node.data.answer.html }}></div>
-                     </Accordion.Body>
-                  </Accordion.Item>
-               )               
+            return(
+            <Accordion.Item eventKey={index}>
+               <Accordion.Header>
+                  <div dangerouslySetInnerHTML={{ __html: node.data.question.html }}></div>
+               </Accordion.Header>
+               <Accordion.Body>
+                  <div dangerouslySetInnerHTML={{ __html: node.data.answer.html }}></div>
+               </Accordion.Body>
+            </Accordion.Item>
+            )               
             })}
-            
-            {/* <Accordion.Item eventKey="1">
+            {/* 
+            <Accordion.Item eventKey="1">
                <Accordion.Header>
                   <h4>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales ?</h4>
                </Accordion.Header>
@@ -164,23 +159,21 @@ const FaqSection = () => {
                   Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
                   <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
                </Accordion.Body>
-            </Accordion.Item> */}
+            </Accordion.Item>
+            */}
          </Accordion>
       </FaqItem>
    </Container>
 </Wrapper>
-  );
-  };
+);
+};
+export default FaqSection;
 
-  export default FaqSection;
         
 const Wrapper = styled.div`
-padding:90px 0 60px 0;
+padding:80px 0 60px 0;
 
-@media (max-width: 991px) {
-    padding:90px 0 70px 0;
-}
-@media (max-width: 767px) {
+@media (max-width: 800px) {
     padding:0px 0 40px 0;
 }
 `;
@@ -190,6 +183,10 @@ margin-bottom:56px;
 background: linear-gradient(104.71deg, #0047AD 34.23%, #0A5ACB 97.16%);
 padding:40px 0;
 position:relative;
+@media (max-width: 800px) {
+   padding:60px 0;
+}
+@media (min-width: 801px) {
 &:before{
   content:'';
   position:absolute;
@@ -202,6 +199,7 @@ position:relative;
   background-repeat:no-repeat;
   background-size: cover;
 }
+}
 h1{
   color:#fff; 
   font-size:32px;
@@ -211,6 +209,11 @@ h1{
 p{
   color:#fff;
   margin-bottom:0px;
+  @media (max-width: 480px) {
+br{
+   display:none;
+}
+  }
  }
 p a{
   text-decoration: underline;

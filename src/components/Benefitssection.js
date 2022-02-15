@@ -2,37 +2,36 @@ import * as React from "react"
 import Accordion from 'react-bootstrap/Accordion'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import styled from "styled-components";
-
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import 'react-tabs/style/react-tabs.css';
-
 const Benefits = () => {
-   const { BenefitImg, BenefitImg2} = useStaticQuery(
-      graphql`
-        query {
-         BenefitImg : file(relativePath: {eq: "benefits.jpg"}) {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600)
-            }
-          }
-          BenefitImg2: file(relativePath: {eq: "benefits2.jpg"}) {
-            childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600)
-            }
-          }
-        }
-      `
-    )
-    return(
- <Wrapper id="benefits">
+const { BenefitImg, BenefitImg2} = useStaticQuery(
+graphql`
+query {
+BenefitImg : file(relativePath: {eq: "benefits.jpg"}) {
+childImageSharp {
+gatsbyImageData(layout: CONSTRAINED, width: 600)
+}
+}
+BenefitImg2: file(relativePath: {eq: "benefits2.jpg"}) {
+childImageSharp {
+gatsbyImageData(layout: CONSTRAINED, width: 600)
+}
+}
+}
+`
+)
+return(
+<Wrapper id="benefits">
    <Container>
       <Tabs>
          <TopText>
             <h2>Our Benefits</h2>
             <TabList>
-               <Tab>I’m Selling</Tab>
-               <Tab>I’m Buying</Tab>
+               <Tab>Selling</Tab>
+               <Tab>Buying</Tab>
+               <Tab>Maintaining</Tab>
             </TabList>
          </TopText>
          <TabPanel>
@@ -56,10 +55,10 @@ const Benefits = () => {
                               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                  <path d="M19.8333 4.26165C19.7458 3.90892 19.3044 3.78939 19.0473 4.04642L16.1426 6.9511L13.4911 6.5093L13.0493 3.85775L15.954 0.953065C16.2126 0.694472 16.088 0.253848 15.7329 0.165567C13.8821 -0.293026 11.8442 0.201114 10.3977 1.6472C8.8493 3.19564 8.42313 5.44017 9.06766 7.39719L0.732127 15.7327C-0.244042 16.7089 -0.244042 18.2917 0.732127 19.2679C1.7083 20.244 3.29111 20.244 4.26728 19.2679L12.5958 10.9394C14.5536 11.5921 16.7938 11.1612 18.3524 9.60266C19.8004 8.15461 20.2938 6.1136 19.8333 4.26165ZM2.50009 18.4374C1.98252 18.4374 1.56259 18.0175 1.56259 17.4999C1.56259 16.9819 1.98252 16.5624 2.50009 16.5624C3.01767 16.5624 3.43759 16.9819 3.43759 17.4999C3.43759 18.0175 3.01767 18.4374 2.50009 18.4374Z"/>
                               </svg>
-                              <h4>Major Repair Concierge</h4>
+                              <h4>30-Day Major Repair Concierge</h4>
                            </Accordion.Header>
                            <Accordion.Body>
-                              If you find issues before you list your home, use our major repair service concierge to make improvements, and sell your house for more
+                              Homecloud identifies problems and creates a custom repair list.We'll help you arrange any major repairs that will help you maxmize the sale price.
                            </Accordion.Body>
                         </Accordion.Item>
                         <Accordion.Item eventKey="2">
@@ -68,6 +67,17 @@ const Benefits = () => {
                                  <path d="M20 10C20 15.5229 15.5229 20 10 20C4.47714 20 0 15.5229 0 10C0 4.47714 4.47714 0 10 0C15.5229 0 20 4.47714 20 10ZM8.84331 15.2949L16.2627 7.87556C16.5146 7.62363 16.5146 7.21512 16.2627 6.96319L15.3503 6.05081C15.0983 5.79883 14.6898 5.79883 14.4379 6.05081L8.3871 12.1015L5.56214 9.27657C5.3102 9.02464 4.90169 9.02464 4.64972 9.27657L3.73734 10.189C3.4854 10.4409 3.4854 10.8494 3.73734 11.1013L7.93089 15.2949C8.18286 15.5469 8.59133 15.5469 8.84331 15.2949Z" />
                               </svg>
                               <h4>Set the Home Buyer Up for Success</h4>
+                           </Accordion.Header>
+                           <Accordion.Body>
+                              Pass along important home documents and a list of home service providers via the Homecloud App.
+                           </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="3">
+                           <Accordion.Header>
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M20 10C20 15.5229 15.5229 20 10 20C4.47714 20 0 15.5229 0 10C0 4.47714 4.47714 0 10 0C15.5229 0 20 4.47714 20 10ZM8.84331 15.2949L16.2627 7.87556C16.5146 7.62363 16.5146 7.21512 16.2627 6.96319L15.3503 6.05081C15.0983 5.79883 14.6898 5.79883 14.4379 6.05081L8.3871 12.1015L5.56214 9.27657C5.3102 9.02464 4.90169 9.02464 4.64972 9.27657L3.73734 10.189C3.4854 10.4409 3.4854 10.8494 3.73734 11.1013L7.93089 15.2949C8.18286 15.5469 8.59133 15.5469 8.84331 15.2949Z" />
+                              </svg>
+                              <h4>Re-Cerification</h4>
                            </Accordion.Header>
                            <Accordion.Body>
                               Like a user manual for the home.....Pass along important home documents and a list of home service providers via the HomeCloud App.
@@ -142,14 +152,51 @@ const Benefits = () => {
                </Item>
             </Grid>
          </TabPanel>
+         <TabPanel>
+            <Grid>
+               <Item>
+                  <TabContent>
+                     <Accordion defaultActiveKey="0">
+                        <Accordion.Item eventKey="0">
+                           <Accordion.Header>
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M19.8333 4.26165C19.7458 3.90892 19.3044 3.78939 19.0473 4.04642L16.1426 6.9511L13.4911 6.5093L13.0493 3.85775L15.954 0.953065C16.2126 0.694472 16.088 0.253848 15.7329 0.165567C13.8821 -0.293026 11.8442 0.201114 10.3977 1.6472C8.8493 3.19564 8.42313 5.44017 9.06766 7.39719L0.732127 15.7327C-0.244042 16.7089 -0.244042 18.2917 0.732127 19.2679C1.7083 20.244 3.29111 20.244 4.26728 19.2679L12.5958 10.9394C14.5536 11.5921 16.7938 11.1612 18.3524 9.60266C19.8004 8.15461 20.2938 6.1136 19.8333 4.26165ZM2.50009 18.4374C1.98252 18.4374 1.56259 18.0175 1.56259 17.4999C1.56259 16.9819 1.98252 16.5624 2.50009 16.5624C3.01767 16.5624 3.43759 16.9819 3.43759 17.4999C3.43759 18.0175 3.01767 18.4374 2.50009 18.4374Z" />
+                              </svg>
+                              <h4>Browse Certified Homes</h4>
+                           </Accordion.Header>
+                           <Accordion.Body>
+                              See Certified homes for sale in your area and feel confident making a stong offer when you find your dream home. A home you love isnt Certified? Request one before you offer!
+                           </Accordion.Body>
+                        </Accordion.Item>
+                        <Accordion.Item eventKey="1">
+                           <Accordion.Header>
+                              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                 <path d="M20 10C20 15.5229 15.5229 20 10 20C4.47714 20 0 15.5229 0 10C0 4.47714 4.47714 0 10 0C15.5229 0 20 4.47714 20 10ZM8.84331 15.2949L16.2627 7.87556C16.5146 7.62363 16.5146 7.21512 16.2627 6.96319L15.3503 6.05081C15.0983 5.79883 14.6898 5.79883 14.4379 6.05081L8.3871 12.1015L5.56214 9.27657C5.3102 9.02464 4.90169 9.02464 4.64972 9.27657L3.73734 10.189C3.4854 10.4409 3.4854 10.8494 3.73734 11.1013L7.93089 15.2949C8.18286 15.5469 8.59133 15.5469 8.84331 15.2949Z" />
+                              </svg>
+                              <h4>Evaluate Your New Home</h4>
+                           </Accordion.Header>
+                           <Accordion.Body>
+                              Get a 500 point home evaluation to ensure your home is safe and see what needs to be fixed
+                           </Accordion.Body>
+                        </Accordion.Item>
+                     </Accordion>
+                  </TabContent>
+               </Item>
+               <Item>
+                  <Image>
+                     <GatsbyImage image={getImage(BenefitImg2)} />
+                  </Image>
+               </Item>
+            </Grid>
+         </TabPanel>
          <Link to="/" className="btn">
          Digitize My Home</Link>
       </Tabs>
    </Container>
 </Wrapper>
-    );
-    };
-export default Benefits;    
+);
+};
+export default Benefits; 
         
 const Wrapper = styled.div`
 padding:120px 0;
@@ -162,6 +209,8 @@ text-align:center;
 }
 `;
 const Container = styled.div`
+content-visibility: auto;
+contain-intrinsic-size: 500px;
 max-width: 1100px;
 margin: 0 auto;
 padding: 0 15px;
