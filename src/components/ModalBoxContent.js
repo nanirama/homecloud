@@ -77,19 +77,22 @@ const Popup = styled.div`
     @media only screen and (max-width:479px){
     // padding:30px 18px;
     }
-    // h4{
-    // margin:32px 0 12px 0;
-    // }
-    svg{
+    h4{
+    margin:32px 0 12px 0;
+    }
+    svg.closebtn{
     position:absolute;
     right:36px;
     top:36px;
     cursor:pointer;
     }
+    .btn{
+      width:100%;
+    }
     .btn1{
-      background: #ECF2FE;
+      background: #ECF2FE !important;
       border-radius: 4px;
-      color: #236DDE;
+      color: #236DDE !important;
       width:100%;
       margin-top:15px;
       border:none;

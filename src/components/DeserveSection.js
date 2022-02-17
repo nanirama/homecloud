@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
+import DigitizeMyHome from "./popups/DigitizeMyHome"
 
 const DeserveSection = ({page}) => {
    const { DeserveImg} = useStaticQuery(
@@ -24,8 +25,10 @@ return(
          <h2>You Deserve More From Your Home
             Get It With HomeCloud
          </h2>
-         <Link to="/" className="btn">
-         Digitize My Home</Link>
+
+         <DigitizeMyHome/>
+         {/* <Link to="/" className="btn">
+         Digitize My Home</Link> */}
          <p>
             <Link to="/pricing/">
             Starting at $399</Link>

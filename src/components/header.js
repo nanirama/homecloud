@@ -113,11 +113,14 @@ position:fixed;
 z-index:999;
 padding:15px 0;
 @media (max-width: 800px) {
-  position:inherit;
-  display:inline-block;
-  padding:25px 0;  
-  min-height:70px;
+  padding:20px 0;
 }
+// @media (max-width: 800px) {
+//   position:inherit;
+//   display:inline-block;
+//   padding:25px 0;  
+//   min-height:70px;
+// }
 ${({ isStickyState, page }) => !isStickyState && page==='home' ? `
     a{
       color:#ffffff !important;
@@ -193,6 +196,11 @@ const Logo = styled.div`
       display: block;
     } 
   }
+  @media (max-width: 359px) {
+    img{
+      width:200px;
+    }
+  } 
  `;
 const Nav = styled.nav`
   padding: 0 0px;

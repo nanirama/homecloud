@@ -2,6 +2,8 @@ import * as React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components";
 
+import DigitizeMyHome from "../popups/DigitizeMyHome"
+
 const Howitwork = ({data}) => {
    console.log('how it works', data)
    const { primary, items } = data[0]
@@ -44,7 +46,8 @@ const Howitwork = ({data}) => {
                 )
              })}             
           </Grid>
-          <Link to="/" className="btn">Digitize My Home</Link>
+          <DigitizeMyHome/>
+          {/* <Link to="/" className="btn">Digitize My Home</Link> */}
        </Container>
     </Wrapper>
     );

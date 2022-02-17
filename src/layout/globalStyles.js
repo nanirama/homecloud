@@ -5,8 +5,6 @@ import "slick-carousel/slick/slick-theme.css";
  
 const GlobalStyle = createGlobalStyle`
 
-
-
 body{margin:0;padding:0;font-family: 'Nunito Sans', sans-serif; font-weight:400;}
 ul, ol{ margin:0; padding:0 !important;}
 ul li{ list-style:none;float:left;}
@@ -20,8 +18,8 @@ h5{font-size:18px;line-height: 23px;letter-spacing: -0.11px;}
 
 p{font-family: 'Nunito Sans', sans-serif; margin:0;margin-bottom:24px;letter-spacing: -0.09px;font-size: 16px;line-height: 22px;font-weight:400;color: #333D47;}
 
-.btn{background: #236DDE;border-radius: 4px;font-size: 16px;line-height: 22px;display: inline-block;text-align: center;letter-spacing: -0.09px;color:#fff;padding:17px 60px;font-weight: 700;}
-.btn:hover{background: #0a5acb;color:#fff;transition-duration: 1s;filter: drop-shadow(0px 2px 10px rgba(35, 109, 222, 0.19)) drop-shadow(0px 6px 17px rgba(35, 109, 222, 0.15)); transition: ease-in-out;transition-duration: 300ms;}
+.btn{background: #236DDE !important;border-radius: 4px;font-size: 16px;line-height: 22px;display: inline-block;text-align: center;letter-spacing: -0.09px;color:#fff !important;padding:17px 60px !important;font-weight: 700 !important; border:none !important; text-decoration:none !important;}
+.btn:hover{background: #0a5acb !important;color:#fff !important;transition-duration: 1s;filter: drop-shadow(0px 2px 10px rgba(35, 109, 222, 0.19)) drop-shadow(0px 6px 17px rgba(35, 109, 222, 0.15)); transition: ease-in-out;transition-duration: 300ms;}
 .btn:focus{box-shadow: 0 0 0 0rem rgba(13,110,253,.25);}
 
 ol{ padding-left:15px;}
@@ -50,13 +48,19 @@ ol li{font-size: 14px;line-height: 20px;letter-spacing: -0.07875px;color: #333D4
 .testimonials .slick-dots li.slick-active button{ background-color:#333D47;}
 .testimonials .slick-dots li button{border:1px solid #333D47;border-radius:50%;width: 12px;height: 12px;}
 
+.hidden{display:none !important;}
 
+@media only screen and (max-width:991px){
+.hidden{display:inline-flex !important;}
+.showimage{display:none !important;}
+}
 @media only screen and (max-width:767px){
 h2{font-size: 32px;line-height: 40px;}
-.btn{ padding:15px 30px; font-size:15px;}
+.btn{ padding:15px 30px !important; font-size:15px;}
 .react-tabs__tab-list{ margin-top:30px !important;  display: flex;justify-content: center;}
 .react-tabs__tab--selected::before {bottom:-10px;}
 .testimonials .slick-slide{ padding:0px; margin-bottom:0px;}
+
 }
 @media only screen and (max-width:599px){
 

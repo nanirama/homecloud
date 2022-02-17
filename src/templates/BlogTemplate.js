@@ -1,9 +1,8 @@
 import React, { useState } from "react"
 import styled from "styled-components";
-import { StaticImage } from "gatsby-plugin-image";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 
-import Layout from '../components/Layout';
+import Layout from "../components/layout"
 import DeserveSection from "../components/DeserveSection";
 // import SEO from '../components/SEO';
 import Blog from '../components/blog';
@@ -15,7 +14,7 @@ const BlogTemplate = ({data, location}) => {
     prismicPost: { data: post },
   } = data;
 
-
+  if (!post) return null;
   return (
     <Layout>
       <Wrapper>

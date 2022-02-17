@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
-
-import Layout from '../components/Layout';
+import Layout from "../components/layout"
 // import SEO from '../components/SEO';
-import BlogIndex from '../components/Blog/BlogIndex';
+import BlogIndex from '../components/blog/BlogIndex';
 import DeserveSection from "../components/DeserveSection";
 //import Pagination from '../components/Pagination';
 
@@ -15,11 +14,7 @@ const BlogListTemplate = ({ data, pageContext, path, location }) => {
 
  
 
-  // const { basePath, humanPageNumber, categories } = pageContext;
-
-  // const blogs = blogsData.map((blog) => blog.node);
-
-  // if (!blogs) return null;
+  if (!blogsData) return null;
   return (
     <Layout> 
       <BlogIndex data={blogsData}/>   

@@ -5,7 +5,6 @@ import Seo from "../components/seo"
 import Herosection from "../components/home/Herosection";
 import Howitworksection from "../components/home/Howitworksection";
 import Servicesection from "../components/Servicesection";
-import Servicesection2 from "../components/Servicesection2";
 import Benefitssection from "../components/home/Benefitssection";
 import Featuressection from "../components/home/Featuressection";
 import DeserveSection from "../components/DeserveSection";

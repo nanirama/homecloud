@@ -3,7 +3,10 @@ import styled from "styled-components";
 import { Accordion, AccordionContext, useAccordionButton } from 'react-bootstrap'
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import ModalPricingContent from "./ModalPricingContent";
+// import ModalPricingContent from "./ModalPricingContent";
+
+import DigitizeMyHome from "../popups/DigitizeMyHome"
+
 const PricingSection = () => {
 const { PricingIcon} = useStaticQuery(
 graphql`
@@ -60,12 +63,13 @@ return(
                </h2>
                <h5>Up to 1,499 Sq. Ft.</h5>
                <p>+$40 for each 500 Sq. Ft. increment.*</p>
-               <Button to="/" className="btn" onClick={() => setModalShow(true)}>Digitize My Home</Button>
+               <DigitizeMyHome/>
+               {/* <Button to="/" className="btn" onClick={() => setModalShow(true)}>Digitize My Home</Button>
                <ModalPricingContent
                   show={modalShow}
                   onHide={() =>
                setModalShow(false)}
-               />  
+               />   */}
             </TextBlock>
             <Benifits>
                <h3>Benefits:</h3>
@@ -341,6 +345,10 @@ h5{
 p{
    font-size:14px;
    line-height:20px;
+}
+.btn{
+   padding:17px 40px !important;
+   margin-bottom: 20px;
 }
 `;
 const Image = styled.div`
