@@ -48,7 +48,7 @@ export default function SimpleSlider() {
 <path d="M105.106 2.63379L103.072 6.72768L98.5202 7.38629C97.704 7.50379 97.3769 8.50253 97.9688 9.07456L101.262 12.2594L100.483 16.7583C100.343 17.5716 101.206 18.1807 101.928 17.8004L106 15.6761L110.072 17.8004C110.794 18.1776 111.657 17.5716 111.517 16.7583L110.738 12.2594L114.031 9.07456C114.623 8.50253 114.296 7.50379 113.48 7.38629L108.928 6.72768L106.894 2.63379C106.53 1.90406 105.473 1.89478 105.106 2.63379Z" fill="#FFA126"/>
 </svg>
 <AuthorBox>
-<StaticImage src="../assets/images/author3.png" alt="" />
+<StaticImage src="../../assets/images/author3.png" alt="" />
 <Author>Kirk West<br/>
 <span>Partner, West & Woodall | Durham, NC</span></Author>
 </AuthorBox>
@@ -64,7 +64,7 @@ export default function SimpleSlider() {
 <path d="M105.106 2.63379L103.072 6.72768L98.5202 7.38629C97.704 7.50379 97.3769 8.50253 97.9688 9.07456L101.262 12.2594L100.483 16.7583C100.343 17.5716 101.206 18.1807 101.928 17.8004L106 15.6761L110.072 17.8004C110.794 18.1776 111.657 17.5716 111.517 16.7583L110.738 12.2594L114.031 9.07456C114.623 8.50253 114.296 7.50379 113.48 7.38629L108.928 6.72768L106.894 2.63379C106.53 1.90406 105.473 1.89478 105.106 2.63379Z" fill="#FFA126"/>
 </svg>
 <AuthorBox>
-<StaticImage src="../assets/images/author2.png" alt="" />
+<StaticImage src="../../assets/images/author2.png" alt="" />
 <Author>James Jansense<br/>
 <span>Homeowner – New York</span></Author>
 </AuthorBox>
@@ -79,7 +79,7 @@ export default function SimpleSlider() {
 <path d="M105.106 2.63379L103.072 6.72768L98.5202 7.38629C97.704 7.50379 97.3769 8.50253 97.9688 9.07456L101.262 12.2594L100.483 16.7583C100.343 17.5716 101.206 18.1807 101.928 17.8004L106 15.6761L110.072 17.8004C110.794 18.1776 111.657 17.5716 111.517 16.7583L110.738 12.2594L114.031 9.07456C114.623 8.50253 114.296 7.50379 113.48 7.38629L108.928 6.72768L106.894 2.63379C106.53 1.90406 105.473 1.89478 105.106 2.63379Z" fill="#FFA126"/>
 </svg>
 <AuthorBox>
-<StaticImage src="../assets/images/author3.png" alt="" />
+<StaticImage src="../../assets/images/author3.png" alt="" />
 <Author>Kirk West<br/>
 <span>Partner, West & Woodall | Durham, NC</span></Author>
 </AuthorBox>
