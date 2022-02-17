@@ -4,7 +4,7 @@ import img from '../../assets/images/durham-banner.png';
 
 import DigitizeMyHome from "../popups/DigitizeMyHome"
 
-const Hero = () => {
+const Bannersection = () => {
   return(
   <Wrapper>
      <BannerContent>
@@ -57,7 +57,7 @@ const Hero = () => {
   );
   };
 
-export default Hero;
+export default Bannersection;
 
 const Wrapper = styled.div`
 background-image: url(${img});
