@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import styled from 'styled-components';
-import Bannersection from "../components/durham/Bannersection";
+import Bannersection from "../components/durham/BannerSection";
 import TopContent from "../components/durham/top-content";
 import Howitworksection from "../components/home/Howitworksection";
 import Servicesection from "../components/Servicesection";
