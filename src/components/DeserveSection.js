@@ -1,6 +1,5 @@
 import * as React from "react"
 import styled from "styled-components";
-
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import DigitizeMyHome from "./popups/DigitizeMyHome"
@@ -22,24 +21,14 @@ return(
    <DeserveBlk page={page}>
       <Container>
          <GatsbyImage image={getImage(DeserveImg)} />
-         <h2>You Deserve More From Your Home
-            Get It With HomeCloud
-         </h2>
-
+         <h2>You Deserve More From Your Home Get It With HomeCloud</h2>
          <DigitizeMyHome/>
-         {/* <Link to="/" className="btn">
-         Digitize My Home</Link> */}
-         <p>
-            <Link to="/pricing/">
-            Starting at $399</Link>
-         </p>
-         <p>(for a 2,500 sq. ft. home) </p>
+         <p><Link to="/pricing/">Starting at $399</Link></p>
+         <p>(for up to a 1,499 sq. ft. home) </p>
       </Container>
    </DeserveBlk>
    );
    };
-   
-   
 export default DeserveSection;  
 
 const Container = styled.div`

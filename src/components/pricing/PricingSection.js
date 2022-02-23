@@ -3,21 +3,19 @@ import styled from "styled-components";
 import { Accordion, AccordionContext, useAccordionButton } from 'react-bootstrap'
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-// import ModalPricingContent from "./ModalPricingContent";
-
+import ModalPricingContent from "./ModalPricingContent";
 import DigitizeMyHome from "../popups/DigitizeMyHome"
-
 const PricingSection = () => {
 const { PricingIcon} = useStaticQuery(
-graphql`
-query {
-PricingIcon: file(relativePath: {eq: "home-icon.png"}) {
-childImageSharp {
-gatsbyImageData(layout: FIXED, width: 67)
-}
-}         
-}
-`
+   graphql`
+      query {
+         PricingIcon: file(relativePath: {eq: "home-icon.png"}) {
+            childImageSharp {
+               gatsbyImageData(layout: FIXED, width: 67)
+            }
+         }         
+      }
+   `
 )
 const [modalShow, setModalShow] = useState(false);
 const ContextAwareToggle = ({ children, eventKey, callback })=> {
@@ -56,20 +54,22 @@ return(
                </Image>
                <h4>Home Evaluation</h4>
                <h2>
-                  From $399* 
-                  <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                     <path d="M10.4998 2.74177C14.4858 2.74177 17.7579 5.9701 17.7579 9.99984C17.7579 14.0083 14.5116 17.2579 10.4998 17.2579C6.49298 17.2579 3.24177 14.0132 3.24177 9.99984C3.24177 5.99436 6.48781 2.74177 10.4998 2.74177ZM10.4998 1.6665C5.89779 1.6665 2.1665 5.39913 2.1665 9.99984C2.1665 14.6032 5.89779 18.3332 10.4998 18.3332C15.1019 18.3332 18.8332 14.6032 18.8332 9.99984C18.8332 5.39913 15.1019 1.6665 10.4998 1.6665ZM9.29016 13.2256H9.69339V9.19339H9.29016C9.06748 9.19339 8.88693 9.01284 8.88693 8.79016V8.52134C8.88693 8.29866 9.06748 8.11812 9.29016 8.11812H10.9031C11.1257 8.11812 11.3063 8.29866 11.3063 8.52134V13.2256H11.7095C11.9322 13.2256 12.1127 13.4062 12.1127 13.6289V13.8977C12.1127 14.1204 11.9322 14.3009 11.7095 14.3009H9.29016C9.06748 14.3009 8.88693 14.1204 8.88693 13.8977V13.6289C8.88693 13.4062 9.06748 13.2256 9.29016 13.2256ZM10.4998 5.16113C9.90599 5.16113 9.42457 5.64255 9.42457 6.2364C9.42457 6.83025 9.90599 7.31167 10.4998 7.31167C11.0937 7.31167 11.5751 6.83025 11.5751 6.2364C11.5751 5.64255 11.0937 5.16113 10.4998 5.16113Z" fill="#333D47"/>
-                  </svg>
+                  From $399*
+                  <span className="popup" onClick={() =>
+                     setModalShow(true)}>
+                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10.0003 2.74177C13.9862 2.74177 17.2584 5.9701 17.2584 9.99984C17.2584 14.0083 14.0121 17.2579 10.0003 17.2579C5.99347 17.2579 2.74226 14.0132 2.74226 9.99984C2.74226 5.99436 5.9883 2.74177 10.0003 2.74177ZM10.0003 1.6665C5.39828 1.6665 1.66699 5.39913 1.66699 9.99984C1.66699 14.6032 5.39828 18.3332 10.0003 18.3332C14.6024 18.3332 18.3337 14.6032 18.3337 9.99984C18.3337 5.39913 14.6024 1.6665 10.0003 1.6665ZM8.79065 13.2256H9.19387V9.19339H8.79065C8.56797 9.19339 8.38742 9.01284 8.38742 8.79016V8.52134C8.38742 8.29866 8.56797 8.11812 8.79065 8.11812H10.4036C10.6262 8.11812 10.8068 8.29866 10.8068 8.52134V13.2256H11.21C11.4327 13.2256 11.6132 13.4062 11.6132 13.6289V13.8977C11.6132 14.1204 11.4327 14.3009 11.21 14.3009H8.79065C8.56797 14.3009 8.38742 14.1204 8.38742 13.8977V13.6289C8.38742 13.4062 8.56797 13.2256 8.79065 13.2256ZM10.0003 5.16113C9.40648 5.16113 8.92506 5.64255 8.92506 6.2364C8.92506 6.83025 9.40648 7.31167 10.0003 7.31167C10.5942 7.31167 11.0756 6.83025 11.0756 6.2364C11.0756 5.64255 10.5942 5.16113 10.0003 5.16113Z" fill="#333D47"/>
+                     </svg>
+                  </span>
+                  <ModalPricingContent
+                     show={modalShow}
+                     onHide={() =>
+                  setModalShow(false)}
+                  /> 
                </h2>
                <h5>Up to 1,499 Sq. Ft.</h5>
                <p>+$40 for each 500 Sq. Ft. increment.*</p>
                <DigitizeMyHome/>
-               {/* <Button to="/" className="btn" onClick={() => setModalShow(true)}>Digitize My Home</Button>
-               <ModalPricingContent
-                  show={modalShow}
-                  onHide={() =>
-               setModalShow(false)}
-               />   */}
             </TextBlock>
             <Benifits>
                <h3>Benefits:</h3>
@@ -127,9 +127,6 @@ return(
                   <Accordion.Item eventKey="0">
                      <Accordion.Header>
                         <ContextAwareToggle eventKey="0"/>
-                        {/* 
-                        <p>See Details </p>
-                        */}
                      </Accordion.Header>
                      <Accordion.Body>
                         <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
@@ -173,9 +170,6 @@ return(
                   <Accordion.Item eventKey="0">
                      <Accordion.Header>
                         <ContextAwareToggle eventKey="0"/>
-                        {/* 
-                        <p>See Details </p>
-                        */}
                      </Accordion.Header>
                      <Accordion.Body>
                         <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
@@ -219,9 +213,6 @@ return(
                   <Accordion.Item eventKey="0">
                      <Accordion.Header>
                         <ContextAwareToggle eventKey="0"/>
-                        {/* 
-                        <p>See Details </p>
-                        */}
                      </Accordion.Header>
                      <Accordion.Body>
                         <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
@@ -263,13 +254,14 @@ return(
 </Wrapper>
 );
 };
-export default PricingSection;  
+export default PricingSection;
+
         
 const Wrapper = styled.div`
 padding:80px 0 30px 0;
 
 @media (max-width: 800px) {
-    padding:0 0 40px 0;
+    padding:66px 0 40px 0;
 }
 `;
 const Banner = styled.div`
@@ -314,9 +306,10 @@ const Grid = styled.div`
     }
 `;
 const TextBlock = styled.div`
-padding-left:20px;
+padding-left:15px;
 @media (max-width: 767px) {
    text-align:center;
+   padding-left:0px;
 }
 h4{
    font-size:18px;
@@ -331,8 +324,11 @@ h2{
    font-weight:700;
    color:#333D47;
    margin:5px 0;
-   svg{
-      margintop:-20px;
+   position:relative;
+   .popup{
+      position: absolute;
+      top: -10px;
+      margin: 0px 0 0 10px;
    }
 }
 h5{
@@ -350,6 +346,7 @@ p{
    padding:17px 40px !important;
    margin-bottom: 20px;
 }
+
 `;
 const Image = styled.div`
 margin-top:20px;

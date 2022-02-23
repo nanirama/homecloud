@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components';
-import { Button } from 'react-bootstrap'
 import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image";
 const UserTypeSuccess = ({setFormStep, onHide }) => {
 return(
     <>
@@ -30,35 +28,35 @@ align-items: center;
     padding:25px 15px;
 }
 h4{
-margin:20vh 0 !important;
+    margin:20vh 0 !important;
 }
 svg.closebtn{
-position:absolute;
-right:32px;
-top:36px;
-cursor:pointer;
+    position:absolute;
+    right:32px;
+    top:36px;
+    cursor:pointer;
     @media (max-width: 599px) {
         right:15px !important;
         top:15px !important;
     }
 }
 .btn{
-width:100%;
+    width:100%;
 }
 input{
-border: 1px solid #DDE1E9;
-width: 100%;
-line-height: 48px;
-padding: 0 15px;
-border-radius: 4px;
-margin-bottom: 24px;
-color: #6C7884;
+    border: 1px solid #DDE1E9;
+    width: 100%;
+    line-height: 48px;
+    padding: 0 15px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    color: #6C7884;
 }
 .btn1{
-background: #ECF2FE;
-border-radius: 4px;
-color: #236DDE;
-width:100%;
-margin-top:15px;
+    background: #ECF2FE;
+    border-radius: 4px;
+    color: #236DDE;
+    width:100%;
+    margin-top:15px;
 }
 `;

@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components";
+import { PrismicRichText } from '@prismicio/react'
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby";
 import AuthorInfo from "./AuthorInfo";
@@ -22,18 +23,33 @@ return(
               <Paragraph>{excerpts.text}</Paragraph>
               <PostInfo>
                 <AuthorInfo data={author}/>
-                <Share socialConfig={{ witter : stwitterHandle,
+                {/* <Share socialConfig={{ witter : stwitterHandle,
                             config: {
                               url: location.href,
                               title: title.text,
                             },
                           }}
-                />
+                /> */}
               </PostInfo>
               <BlogImage>
                     <GatsbyImage image={getImage(featured_image)} alt={title.text} />
               </BlogImage>
-              <div dangerouslySetInnerHTML={{ __html: content.html }} />
+              {/* <div dangerouslySetInnerHTML={{ __html: content.html }} /> */}
+              <Container>
+                 <PrismicRichText
+                    field={content.richText}
+                    className="richtext-content"
+                    components={{
+                      heading1: ({ children }) => <Heading1>{children}</Heading1>,
+                      heading2: ({ children }) => <Heading2>{children}</Heading2>,
+                      heading3: ({ children }) => <Heading3>{children}</Heading3>,
+                      heading3: ({ children }) => <Heading4>{children}</Heading4>,
+                      heading5: ({ children }) => <Heading5>{children}</Heading5>,
+                      heading6: ({ children }) => <Heading6>{children}</Heading6>,
+                      paragraph: ({ children }) => <RichTextParagraph>{children}</RichTextParagraph>,
+                    }}
+                />
+             </Container>
           </BlogSection>
 );
 };
@@ -99,4 +115,243 @@ border-radius: 6px;
 @media (max-width: 767px) {
 margin:32px 0;
 }
+`;
+
+const Container = styled.div`
+margin: 0 auto;
+position: relative;
+& > ul{
+  padding-left:20px !important;
+  margin-bottom:18px;
+  width:100%;
+  float:left;
+}
+& > ul > li{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  font-weight: 400;
+  color: #333D47;
+  list-style-type: disc;
+  font-family: 'Nunito Sans',sans-serif;
+  width:100%;
+& > strong{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-style:italic;
+  font-weight: 400;
+}
+}
+`;
+const Heading1 = styled.h1`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin:8px 0px !important;
+letter-spacing:-0.24px;
+font-weight: 700;
+& > em{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading2 = styled.h2`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin:8px 0px !important;
+letter-spacing:-0.24px;
+font-weight: 700;
+& > em{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading3 = styled.h3`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin-bottom:8px !important;
+font-weight: 500;
+letter-spacing: -0.24px;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading4 = styled.h4`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 20px;
+line-height: 30px;
+color: #333D47;
+margin-bottom:8px !important;
+letter-spacing:-0.24px;
+font-weight: 500;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading5 = styled.h5`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 18px;
+line-height: 23px;
+color: #333D47;
+letter-spacing: -0.108px;
+margin:0 0 8px 0 !important;
+font-weight: 500;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 500;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 700;
+}
+`;
+const Heading6 = styled.h6`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 16px;
+line-height: 19px;
+color: #333D47;
+margin-bottom:8px !important;
+font-weight: 500;
+letter-spacing: -0.108px;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing: -0.108px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 700;
+  letter-spacing: -0.108px;
+}
+`;
+const RichTextParagraph = styled.p`
+width:100%;
+font-family: 'Nunito Sans',sans-serif;
+font-size: 14px;
+line-height: 22px;
+letter-spacing: -0.07875px;
+font-weight: 400;
+color: #333D47;
+margin-bottom:18px;
+// margin:6px 0px !important;
+// padding:7px 0px !important;
+
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-style:italic;
+}
+
+& > a{
+       color:#236DDE;
+       text-decoration: underline;       
+    }
 `;

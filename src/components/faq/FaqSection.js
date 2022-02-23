@@ -7,27 +7,27 @@ import img from '../../assets/images/faq-banner.png';
 import { Link } from "gatsby";
 const FaqSection = () => {
 const { FaqData } = useStaticQuery(
-graphql`
-query {
-FaqData : allPrismicFaq {
-edges {
-node {
-uid
-data {
-answer {
-html
-text
-}
-question {
-html
-text
-}
-}
-}
-}
-}
-}
-`
+   graphql`
+      query {
+         FaqData : allPrismicFaq {
+            edges {
+               node {
+                  uid
+                     data {
+                     answer {
+                        html
+                        text
+                     }
+                     question {
+                        html
+                        text
+                     }
+                  }
+               }
+            }
+         }
+      }
+   `
 )
 console.log('All Data', FaqData)
 const [activeEventKey, setActiveEventKey] = useState(null);
@@ -81,86 +81,6 @@ return(
             </Accordion.Item>
             )               
             })}
-            {/* 
-            <Accordion.Item eventKey="1">
-               <Accordion.Header>
-                  <h4>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales ?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="2">
-               <Accordion.Header>
-                  <h4>Quisque sodales arcu et ultricies volutpat?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="3">
-               <Accordion.Header>
-                  <h4>Phasellus rhoncus quis nunc auctor consequat?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="4">
-               <Accordion.Header>
-                  <h4>Vivamus ac dolor lectus Pellentesque sed nisi porta?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="5">
-               <Accordion.Header>
-                  <h4>Posuere purus ac, facilisis quam Praesent accumsan ipsum eu quam condimentum?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="6">
-               <Accordion.Header>
-                  <h4>Maecenas hendrerit risus quis quam imperdiet ultricies id in justo?</h4>
-               </Accordion.Header>
-               <Accordion.Body>
-                  Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales.
-                  Quisque sodales arcu et ultricies volutpat. Phasellus rhoncus quis nunc auctor 
-                  consequat. Vivamus ac dolor lectus. Pellentesque sed nisi porta, posuere purus ac,
-                  facilisis quam. Praesent accumsan ipsum eu quam condimentum, ut cursus sem aliquet.
-                  Maecenas hendrerit risus quis quam imperdiet ultricies id in justo.<br/>
-                  <a href="#">A descriptive, concise link telling the user what to expect when they click it.</a>
-               </Accordion.Body>
-            </Accordion.Item>
-            */}
          </Accordion>
       </FaqItem>
    </Container>
@@ -174,7 +94,7 @@ const Wrapper = styled.div`
 padding:80px 0 60px 0;
 
 @media (max-width: 800px) {
-    padding:0px 0 40px 0;
+    padding:66px 0 40px 0;
 }
 `;
 const Banner = styled.div`

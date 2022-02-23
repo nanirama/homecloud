@@ -1,11 +1,12 @@
 import * as React from "react"
-import Layout from "../components/layout"
+import { PrismicRichText } from '@prismicio/react'
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 import styled from "styled-components";
 import { graphql } from "gatsby"
 
+import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { Link } from "gatsby"
 
@@ -23,13 +24,28 @@ const PageTemplate = (props)=>{
             {/* <GatsbyImage image={getImage(PageData.data.page_banner)} /> */}
              <Container>
                 <Heading>{PageData.data.title.text}</Heading>
+
                 <div dangerouslySetInnerHTML={{ __html: PageData.data.subtext.html }} className="subtext" ></div>
+               
              </Container>
           </BackgroundImage>
           </PageBanner>
           <Content>
              <Container>
-                <div dangerouslySetInnerHTML={{ __html: PageData.data.content.text }} ></div>
+                {/* <div dangerouslySetInnerHTML={{ __html: PageData.data.content.text }} ></div> */}
+                 <PrismicRichText
+                    field={PageData.data.content.richText}
+                    className="richtext-content"
+                    components={{
+                      heading1: ({ children }) => <Heading1>{children}</Heading1>,
+                      heading2: ({ children }) => <Heading2>{children}</Heading2>,
+                      heading3: ({ children }) => <Heading3>{children}</Heading3>,
+                      heading3: ({ children }) => <Heading4>{children}</Heading4>,
+                      heading5: ({ children }) => <Heading5>{children}</Heading5>,
+                      heading6: ({ children }) => <Heading6>{children}</Heading6>,
+                      paragraph: ({ children }) => <Paragraph>{children}</Paragraph>,
+                    }}
+                />
              </Container>
           </Content>
        </Wrapper>
@@ -51,6 +67,7 @@ query getPagesData($id: String!) {
         text
       }
       content {
+        richText
         html
         text
       }
@@ -64,17 +81,13 @@ query getPagesData($id: String!) {
 const Wrapper = styled.div`
 padding:80px 0 0 0;
 @media only screen and (max-width:800px){
-padding:0;
+padding:66px 0 0 0;
 }
 `;
 const PageBanner = styled.div`
 .pagebanner-bg{
   padding:40px 0;
-  // @media (max-width: 800px) {
-  //  padding:60px 0;
-  // }
-
-  @media only screen and (max-width:800px){
+    @media only screen and (max-width:800px){
     padding:60px 0;
     transform: matrix(1, 0, 0, 1, 0, 0);
     background: linear-gradient(-104.08deg, #DDE1E9 -77.81%, #62718D 97.9%);
@@ -85,8 +98,6 @@ const PageBanner = styled.div`
     }
   }
 }
-// background: linear-gradient(104.71deg, #0047AD 34.23%, #0A5ACB 97.16%);
-
 transform: matrix(1, 0, 0, 1, 0, 0);
 position:relative;
 
@@ -106,14 +117,38 @@ max-width: 830px;
 margin: 0 auto;
 padding: 0 15px;
 position: relative;
-// .subtext{
-//   @media (min-width: 992px) {
-//     width:60% !important;
-//   }
-//   @media (max-width: 991px) {
-//     width:95% !important;
-//   }
-// }
+& > ul{
+  padding-left:20px !important;
+  margin-bottom:18px;
+  width:100%;
+  float:left;
+}
+& > ul > li{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  font-weight: 400;
+  color: #333D47;
+  list-style-type: disc;
+  font-family: 'Nunito Sans',sans-serif;
+  width:100%;
+& > strong{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em{
+  font-size: 14px;
+  line-height: 23px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-style:italic;
+  font-weight: 400;
+}
+}
+
 `;
 const Heading = styled.h2`
 font-size:32px;
@@ -122,30 +157,233 @@ letter-spacing: -0.44px;
 color:#fff;
 margin-bottom:16px;
 `;
+const Heading1 = styled.h1`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin:8px 0px !important;
+letter-spacing:-0.24px;
+font-weight: 700;
+& > em{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading2 = styled.h2`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin:8px 0px !important;
+letter-spacing:-0.24px;
+font-weight: 700;
+& > em{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin:8px 0px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading3 = styled.h3`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 24px;
+line-height: 30px;
+color: #333D47;
+margin-bottom:8px !important;
+font-weight: 500;
+letter-spacing: -0.24px;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 24px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 700;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading4 = styled.h4`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 20px;
+line-height: 30px;
+color: #333D47;
+margin-bottom:8px !important;
+letter-spacing:-0.24px;
+font-weight: 500;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 20px;
+  line-height: 30px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing:-0.24px;
+}
+`;
+const Heading5 = styled.h5`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 18px;
+line-height: 23px;
+color: #333D47;
+letter-spacing: -0.108px;
+margin:0 0 8px 0 !important;
+font-weight: 500;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 500;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -0.108px;
+  color: #333D47;
+  font-weight: 700;
+}
+`;
+const Heading6 = styled.h6`
+font-family: 'Nunito Sans',sans-serif;
+font-size: 16px;
+line-height: 19px;
+color: #333D47;
+margin-bottom:8px !important;
+font-weight: 500;
+letter-spacing: -0.108px;
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 500;
+  letter-spacing: -0.108px;
+  font-style:italic;
+}
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 16px;
+  line-height: 19px;
+  color: #333D47;
+  margin-bottom:8px !important;
+  font-weight: 700;
+  letter-spacing: -0.108px;
+}
+`;
+const Paragraph = styled.p`
+width:100%;
+font-family: 'Nunito Sans',sans-serif;
+font-size: 14px;
+line-height: 22px;
+letter-spacing: -0.07875px;
+font-weight: 400;
+color: #333D47;
+margin-bottom:18px;
+// margin:6px 0px !important;
+// padding:7px 0px !important;
+
+& > strong{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-weight: 700;
+}
+& > em{
+  font-family: 'Nunito Sans',sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.07875px;
+  color: #333D47;
+  font-style:italic;
+}
+
+& > a{
+       color:#236DDE;
+       text-decoration: underline;       
+    }
+`;
 const Content = styled.div`
 padding:55px 0;
-h3{
-  margin-bottom:40px;
-}
-p{
-  font-size: 14px;
-  line-height: 20px;
-  letter-spacing: -0.07875px;
-  span{
-      margin-bottom:40px;
-      display:inline-block;
-  }
-  a{
-    color:#236DDE;
-  }
-}
-ol{
-  margin-bottom:20px;
-  padding-left:16px !important;
-}
-h5{
-  margin:30px 0;
-  display:inline-block;
-}
+// h3{
+//   margin-bottom:40px;
+// }
+// p{
+//   font-size: 14px;
+//   line-height: 22px;
+//   letter-spacing: -0.07875px;
+//   span{
+//       margin-bottom:40px;
+//       display:inline-block;
+//   }
+//   a{
+//     color:#236DDE;
+//   }
+// }
+// ol{
+//   margin-bottom:20px;
+//   padding-left:16px !important;
+// }
+// h5{
+//   margin:30px 0;
+//   display:inline-block;
+// }
 `;
 export default PageTemplate

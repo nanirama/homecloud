@@ -5,23 +5,21 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 
-import Layout from "../layout"
-
 import DigitizeMyHome from "../popups/DigitizeMyHome"
 
 const Hero = ({data}) => {
-  const { title, description } = data.data
-  const { HeroBanner } = useStaticQuery(
-    graphql`
-      query {
-        HeroBanner: file(relativePath: {eq: "hero-banner.jpg"}) {
-          childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
-          }
+const { title, description } = data.data
+const { HeroBanner } = useStaticQuery(
+  graphql`
+    query {
+      HeroBanner: file(relativePath: {eq: "hero-banner.jpg"}) {
+        childImageSharp {
+          gatsbyImageData(layout: FULL_WIDTH)
         }
       }
-    `
-  )
+    }
+  `
+)
   const image = getImage(HeroBanner)
   const bgImage = convertToBgImage(image)
   const [modalShow, setModalShow] = useState(false);
@@ -48,31 +46,31 @@ const Button = styled.button`
 const Wrapper = styled.div`
 content-visibility: auto;
 contain-intrinsic-size: 500px;
-.herobanner-bg{
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size: cover;
-  min-height:800px;
-  @media (max-width: 800px) {
-    min-height:500px;
+  .herobanner-bg{
+      background-position:center;
+      background-repeat:no-repeat;
+      background-size: cover;
+      min-height:800px;
+      position:relative;
+    @media (max-width: 800px) {
+      min-height:500px;
+    }
+    @media (max-width: 767px) {
+      min-height:300px;
+      margin-bottom:180px;
+    }
+    @media (min-width: 801px) {
+      &:before{
+        content:'';
+        position:absolute;
+        top:0;
+        left:0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0) 100%);
+        width:100%;
+        height:13%;
+      }
+    }
   }
-  @media (max-width: 767px) {
-    min-height:300px;
-    margin-bottom:180px;
-  }
-  @media (min-width: 801px) {
-  &:before{
-    content:'';
-    position:absolute;
-    top:0;
-    left:0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0) 100%);
-    width:100%;
-    height:13%;
-  }
-}
-position:relative;
-}
 `;
 const Container = styled.div`
 max-width: 1200px;

@@ -21,6 +21,13 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      CityPages: allPrismicCityLandingPages {
+        edges {
+          node {
+            uid
+          }
+        }
+      }
   }
 `)
 const DEFAULT_BLOG_BASE_PATH = '/blog';
@@ -57,14 +64,25 @@ const postsPerPage = DEFAULT_BLOG_POSTS_PER_PAGE;
       });
     })
 
-data.Pages.edges.forEach(({ node }) => { 
-  console.log('Page id', node.uid)     
-  createPage({
-    path: `${node.uid}/`,
-    component: path.resolve("./src/templates/page-template.js"),
-    context: {
-      id:node.uid
-    },
+  data.Pages.edges.forEach(({ node }) => { 
+    console.log('Page id', node.uid)     
+    createPage({
+      path: `${node.uid}/`,
+      component: path.resolve("./src/templates/page-template.js"),
+      context: {
+        id:node.uid
+      },
+    })
   })
-})
+
+  data.CityPages.edges.forEach(({ node }) => { 
+    console.log('Page id', node.uid)     
+    createPage({
+      path: `${node.uid}/`,
+      component: path.resolve("./src/templates/CityPageTemplate.js"),
+      context: {
+        id:node.uid
+      },
+    })
+  })
 }

@@ -1,9 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 import { StaticImage } from "gatsby-plugin-image";
-import { Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby"
 
 const Footer = () => {
+   const { CityPages } = useStaticQuery(
+      graphql`
+        query {
+         CityPages : allPrismicCityLandingPages(sort: {fields: prismicId, order: ASC}) {
+            edges {
+              node {
+                uid
+                data {
+                  title {
+                    text
+                  }
+                }
+              }
+            }
+          }
+        }
+      `
+    )
    return (
    <Wrapper>
       <Container>
@@ -16,23 +34,23 @@ const Footer = () => {
                      {/* <Text>Provides more detailed information than a home inspection so you can.</Text> */}
                   </Logo>
                   </Link>
+                  <Contact>
+                  <p>Call 919-295-0975</p>
+                     <p><Link to="">support@gethomecloud.com</Link></p>
+                     </Contact>
                </Item>
                <Item>
                   <FooterLinks>
                      <Heading>Where we are</Heading>
                      <Links>
-                        <li>
-                           <Link to="/durham">
-                           Durham</Link>
-                        </li>
-                        <li>
-                           <Link to="/">
-                           Chapel Hill</Link>
-                        </li>
-                        <li>
-                           <Link to="/">
-                           Raleigh</Link>
-                        </li>
+                     { CityPages && CityPages.edges.map((item, index)=>{
+                        return(
+                           <li key={index}>
+                              <Link to={`/${item.node.uid}/`}>{item.node.data.title.text}</Link>
+                           </li>
+                        )
+                     })}
+                    
                      </Links>
                   </FooterLinks>
                   <FooterLinks>
@@ -52,19 +70,6 @@ const Footer = () => {
                         </li>
                      </Links>
                   </FooterLinks>
-                  {/* <FooterLinks>
-                     <Heading>Terms & Privacy</Heading>
-                     <Links>
-                        <li>
-                           <Link to="/terms-of-service/">
-                           Terms of Service</Link>
-                        </li>
-                        <li>
-                           <Link to="/privacy-policy/">
-                           Privacy Policy</Link>
-                        </li>
-                     </Links>
-                  </FooterLinks> */}
                </Item>
             </Grid>
          </FooterTop>
@@ -72,7 +77,7 @@ const Footer = () => {
             <Bottom>
             <Paragraph>© 2022 HomeCloud. All rights reserved.</Paragraph>
             <ul>
-               <li><Link to="/terms-of-service/">Terms of Services</Link></li>
+               <li><Link to="/terms-of-service/">Terms of Service</Link></li>
                <li><Link to="/privacy-policy/">Privacy Policy</Link></li>
             </ul>
             </Bottom>
@@ -119,21 +124,25 @@ grid-gap: 10px 30px;
 const Item = styled.div`
 `;
 const Logo = styled.div`
+margin-bottom:20px;
 @media only screen and (max-width:767px){
    margin-top:30px;
 }
 `;
-const Text = styled.p`
-display:none;
-// @media only screen and (max-width:767px){
-// display:block;
-// color:#fff;
-// margin-top:20px;
-// font-size: 13px;
-// line-height: 19px;
-// letter-spacing: -0.07px;
-// }
+
+const Contact = styled.div`
+p{
+   color:#fff;
+   margin-bottom:8px;
+   font-size: 14px;
+   line-height: 19px;
+   a{
+      color:#fff;
+      text-decoration:underline;
+   }
+}
 `;
+
 const Heading = styled.h5`
 letter-spacing: -0.07px;
 font-weight: bold;

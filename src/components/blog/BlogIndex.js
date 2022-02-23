@@ -95,7 +95,7 @@ export default BlogIndex;
 const Wrapper = styled.div`
 padding:80px 0 60px 0;
 @media (max-width: 800px) {
-   padding:0px 0 40px 0;
+   padding:66px 0 40px 0;
 }
 `;
 const Banner = styled.div`

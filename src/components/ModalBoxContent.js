@@ -50,51 +50,51 @@ function ModalBoxContent(props) {
         </Modal>
     );
   }
-  export default ModalBoxContent
+export default ModalBoxContent;
 
-  export const PopupBtn = styled.button`
-  background-color:transparent;
-  width:28px;
-  height:28px;
-  float:right;
-  border:none;
-  margin:5px;
-  background-repeat: no-repeat;
-  background-position:center center;
-  background-size: 100% 100%;
-`
+export const PopupBtn = styled.button`
+background-color:transparent;
+width:28px;
+height:28px;
+float:right;
+border:none;
+margin:5px;
+background-repeat: no-repeat;
+background-position:center center;
+background-size: 100% 100%;
+`;
 const Popup = styled.div`
-    max-width:100%;
-    display: flex;
-    position:relative;
-    // padding:35px;
-    text-align:center;
-    flex-direction: column;
-    align-items: center;
-    background: #FFFFFF;
-    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.13);
-    border-radius: 8px;
-    @media only screen and (max-width:479px){
-    // padding:30px 18px;
-    }
-    h4{
-    margin:32px 0 12px 0;
-    }
-    svg.closebtn{
-    position:absolute;
-    right:36px;
-    top:36px;
-    cursor:pointer;
-    }
-    .btn{
-      width:100%;
-    }
-    .btn1{
-      background: #ECF2FE !important;
-      border-radius: 4px;
-      color: #236DDE !important;
-      width:100%;
-      margin-top:15px;
-      border:none;
-    }
+max-width:100%;
+display: flex;
+position:relative;
+// padding:35px;
+text-align:center;
+flex-direction: column;
+align-items: center;
+background: #FFFFFF;
+box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.13);
+border-radius: 8px;
+  @media only screen and (max-width:479px){
+   // padding:30px 18px;
+  }
+h4{
+  margin:32px 0 12px 0;
+}
+svg.closebtn{
+  position:absolute;
+  right:36px;
+  top:36px;
+  cursor:pointer;
+}
+.btn{
+  width:100%;
+}
+.btn1{
+  background: #ECF2FE !important;
+  border-radius: 4px;
+  color: #236DDE !important;
+  width:100%;
+  margin-top:15px;
+  border:none;
+}
 `;

@@ -9,7 +9,9 @@ const BlogItem = ({data}) => {
     return(
         <BlogListItem>
                <BlogImage>
-                  <GatsbyImage image={getImage(featured_image)} alt={title.text} />
+                    <Link to={data.node.uid}>
+                        <GatsbyImage image={getImage(featured_image)} alt={title.text} />
+                    </Link>
                </BlogImage>
                <Date>Jan 2, 2022</Date>
                <h5>{title.text}</h5>

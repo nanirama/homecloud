@@ -86,13 +86,13 @@ const Header = ({page}) => {
               </StyledBurger>
               <Ul open={open} isStickyState={isStickyState} page={page}>
                  <li>
-                 {page==='home' ? <AnchorLink href='#howitworks'>How it Works</AnchorLink> : <Link to='/#howitworks'>How it Works</Link>}
+                 {page==='home' ? <AnchorLink href='#howitworks' onClick={e=>setOpen(false)}>How it Works</AnchorLink> : <Link to='/#howitworks'>How it Works</Link>}
                  </li>
                  <li>
-                 {page==='home' ? <AnchorLink href='#benefits'>Benefits</AnchorLink> : <Link to='/#benefits'>Benefits</Link>}
+                 {page==='home' ? <AnchorLink href='#benefits' onClick={e=>setOpen(false)}>Benefits</AnchorLink> : <Link to='/#benefits'>Benefits</Link>}
                  </li>
                  <li>
-                    {page==='home' ? <AnchorLink href='#whatsincluded'>What’s Included</AnchorLink> : <Link to='/#whatsincluded'>What’s Included</Link>}
+                    {page==='home' ? <AnchorLink href='#whatsincluded' onClick={e=>setOpen(false)}>What’s Included</AnchorLink> : <Link to='/#whatsincluded'>What’s Included</Link>}
                  </li>
                  <li>
                     <Link to="/">

@@ -24,12 +24,6 @@ return(
 }
 export default InformationFormSuccess;
 
-const ModalBlock = styled.div`
-margin-bottom:30px;
-h3{
-    margin-bottom:30px;
-    }
-`;
 const Popup = styled.div`
 max-width:500px;
 background: #FFFFFF;
@@ -41,92 +35,49 @@ padding:0px;
 flex-direction: column;
 align-items: center;
 h4{
-width:100%;
-text-align:left;
-padding:32px;
-@media (max-width: 599px) {
-padding:25px 15px;
-}
+    width:100%;
+    text-align:left;
+    padding:32px;
+    @media (max-width: 599px) {
+        padding:25px 15px;
+    }
 }
 svg{
-position:absolute;
-right:32px;
-top:36px;
-cursor:pointer;
+    position:absolute;
+    right:32px;
+    top:36px;
+    cursor:pointer;
     @media (max-width: 599px) {
         right:15px;
     }
 }
 .btn{
-width:100%;
+    width:100%;
 }
 input{
-border: 1px solid #DDE1E9;
-width: 100%;
-line-height: 40px;
-padding: 0 15px;
-border-radius: 4px;
-margin-bottom: 24px;
-color: #6C7884;
-font-size: 14px;
-font-style:italic;
+    border: 1px solid #DDE1E9;
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    color: #6C7884;
+    font-size: 14px;
+    font-style:italic;
 }
 select{
     border: 1px solid #DDE1E9;
-width: 100%;
-line-height: 40px;
-padding: 0 15px;
-border-radius: 4px;
-margin-bottom: 24px;
-color: #6C7884;
-font-size: 14px;
-font-style:italic;
-height: 40px;
-background-color: transparent;
-}
-`;
-const TextBlock = styled.div`
-padding:32px;
-padding-bottom:0;
-border-top:1px solid #DDE1E9;
-@media (max-width: 599px) {
-    padding:25px 15px;
-}
-p{
-    background: #F6F7F9;
-    border-radius: 6px;
-    padding:12px;
-    text-align:left;
+    width: 100%;
+    line-height: 40px;
+    padding: 0 15px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    color: #6C7884;
     font-size: 14px;
-    line-height: 20px;
-    margin:0;
+    font-style:italic;
+    height: 40px;
+    background-color: transparent;
 }
-`;
-const FormBlk = styled.div`
-width:100%;
-`;
-const Form = styled.div`
-width:100%;
-padding:32px;
-padding-bottom: 10px;
-border-bottom:1px solid #DDE1E9;
-@media (max-width: 599px) {
-    padding:25px 15px;
-}
-label{
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 20px;
-    margin-bottom:4px;
-}
-`;
-const FormBtn = styled.div`
-padding:32px;
-@media (max-width: 599px) {
-    padding:25px 15px;
-}
-`;
-const Button = styled.div`
 `;
 const Success = styled.div`
 padding:32px;
