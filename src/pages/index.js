@@ -1,20 +1,29 @@
 import * as React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+import SEO from "../components/seo"
 import Herosection from "../components/home/Herosection";
 import Howitworksection from "../components/home/Howitworksection";
-import Servicesection from "../components/Servicesection";
+import Services from "../components/services"
 import Benefitssection from "../components/home/Benefitssection";
 import Featuressection from "../components/home/Featuressection";
-import DeserveSection from "../components/DeserveSection";
 import Testimonialsection from "../components/Testimonialsection";
+import DeserveSection from "../components/DeserveSection";
 
+import { BrowserView, TabletView, MobileView } from "react-device-detect"
+import styled from "styled-components"
 
 const IndexPage = (props) => {
+  console.log('Props', props)
   const { data } = props
-  const { PageData } = data
-  //console.log('PageData', PageData)
+  const { PageData, site, SiteLogo } = data
+
+  const siteURL = site.siteMetadata.siteUrl 
+  const siteLogo = siteURL+SiteLogo.publicURL;
+
+  const title = 'Home Cloud'
+  const desc = 'Home Cloud Meta Desccription'
+
   const { body } = PageData.data
   const benefits = body.filter((item)=>{
     return item.slice_type==='our_benefits'
@@ -24,10 +33,14 @@ const IndexPage = (props) => {
   })
   return(
   <Layout page="home">
+       <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       />
     <Herosection data={PageData} />
     <Howitworksection data={howItWorks} />
-    <Servicesection />
-    {/* <Servicesection2 /> */}
+    <Services/>
     {benefits && <Benefitssection id="benefits" data={benefits} />}
     <Featuressection id="whatsincluded" />
     <Testimonialsection />
@@ -38,6 +51,14 @@ const IndexPage = (props) => {
 
 export const query = graphql`
 query getHomeData{
+  site {
+    siteMetadata {
+      siteUrl
+    }
+  }
+  SiteLogo: file(relativePath: {eq: "logos/logo-1.png"}) {
+    publicURL
+  }
   PageData : prismicHome {
     id
     data {
@@ -79,4 +100,18 @@ query getHomeData{
   }
 }
 `;
-export default IndexPage
+export default IndexPage;
+
+const ServicesBlock = styled.div`
+.browserview, .tabletview, .mobileview{display:none;}
+@media (min-width: 992px) {
+  .browserview{display:block;}
+}
+@media only screen and (min-width: 701px) and (max-width: 991px) {
+  .tabletview{display:block;}
+}
+@media (max-width: 700px) {
+  .mobileview{display:block;}
+  }
+
+`;

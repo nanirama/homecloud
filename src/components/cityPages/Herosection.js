@@ -94,8 +94,14 @@ h2{
   color: #236DDE;
   font-size:28px;
   line-height:34px;
+  @media (min-width: 768px) and  (max-width:991px)  {
+    font-size:26px;
+    line-height:30px;
+  }
   @media (max-width: 479px) {
     margin-bottom:15px;
+    font-size: 26px;
+    line-height: 32px;
   }
 }
 @media (max-width: 479px) {
@@ -157,7 +163,7 @@ font-size:28px;
 line-height:34px; 
 margin:14px 0 8px 0;  
     @media (min-width: 992px) and  (max-width:1160px)  {
-        font-size:22px;
+        font-size:20px;
     }
     @media (max-width: 991px) {
         font-size:16px;

@@ -6,7 +6,7 @@ const DigitizeMyHome = () => {
 const [modalShow, setModalShow] = useState(false);
 return(
     <>
-    <Button className="btn" onClick={() => setModalShow(true)}>Digitize My Home</Button>
+    <Button className="btn" onClick={() => setModalShow(true)}>Certify a Home</Button>
     <ModalBoxContent
           show={modalShow}
           onHide={() => setModalShow(false)}

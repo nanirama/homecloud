@@ -32,7 +32,6 @@ const PageTemplate = (props)=>{
           </PageBanner>
           <Content>
              <Container>
-                {/* <div dangerouslySetInnerHTML={{ __html: PageData.data.content.text }} ></div> */}
                  <PrismicRichText
                     field={PageData.data.content.richText}
                     className="richtext-content"
@@ -148,7 +147,6 @@ position: relative;
   font-weight: 400;
 }
 }
-
 `;
 const Heading = styled.h2`
 font-size:32px;

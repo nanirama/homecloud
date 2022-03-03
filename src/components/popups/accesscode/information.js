@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
+import { useForm } from "react-hook-form";
 import axios from "axios"
 import styled from "styled-components"
 import Select from "react-select"
 
 const InformationForm = ({ setFormStep, onHide }) => {
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [serverState, setServerState] = useState({
     submitting: false,
@@ -21,7 +23,7 @@ const InformationForm = ({ setFormStep, onHide }) => {
       form.reset()
     }
   }
-  const handleOnSubmit = e => {
+  const onSubmit = (data,e) => {
     setIsSubmitting(true)
     e.preventDefault()
     const form = e.target
@@ -70,7 +72,7 @@ return (
          them.
       </p>
    </TextBlock>
-   <form onSubmit={handleOnSubmit}>
+   <form onSubmit={handleSubmit(onSubmit)}>
       <FormBlk>
          <FormInner>
             <label>Service Type</label>
@@ -82,22 +84,24 @@ return (
                className="basic-multi-select"
                classNamePrefix="select"
                />
-            <label>Your First Name</label>
+            <label>Your First Name*</label>
             <input
                type="text"
                placeholder="First Name"
                name="firstname"
                id="firstname"
+               {...register("firstname", { required: true })} className={errors.firstname && `error`} 
                />
-            <label>Your Last Name</label>
+            <label>Your Last Name*</label>
             <input
                type="text"
                placeholder="Last Name"
                id="lastname"
                placeholder="Last Name"
+               {...register("lastname", { required: true })} className={errors.lastname && `error`} 
                />
             <label>Your Email Address</label>
-            <input required
+            <input 
                type="text"
                placeholder="Email Address"
                id="email"
@@ -109,6 +113,7 @@ return (
                placeholder="Email Address"
                id="homeowner_email"
                name="homeowner_email"
+               {...register("homeowner_email", { required: true })} className={errors.homeowner_email && `error`} 
                />
             <label>Selling Real Estate Agent Email</label>
             <input
@@ -116,6 +121,7 @@ return (
                placeholder="Email Address"
                id="agent_email"
                name="agent_email"
+               {...register("agent_email", { required: true })} className={errors.agent_email && `error`} 
                />
          </FormInner>
          <FormBtn>
@@ -182,8 +188,9 @@ input {
   font-size: 14px;
   font-style: italic;
 }
-input error, .error{
-  border: 1.5px solid #DB4343;
+input.error, .error, .error:focus-visible{
+  border: 2px solid #DB4343 !important;
+  box-sizing: border-box !important;
 }
 select {
   border: 1px solid #dde1e9;

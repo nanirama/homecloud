@@ -56,7 +56,7 @@ const Popup = styled.div`
     text-align:left;
     width:100%;
     margin-bottom:10px;
-    color: #228753;
+    color: #236DDE;
     font-size:14px;
     line-height: 20px;
     }

@@ -9,7 +9,7 @@ const FaqSection = () => {
 const { FaqData } = useStaticQuery(
    graphql`
       query {
-         FaqData : allPrismicFaq {
+         FaqData : allPrismicFaq(sort: {fields: data___faqorder, order: ASC}) {
             edges {
                node {
                   uid
@@ -59,10 +59,7 @@ return(
          <p>Everything you need to know about HomeCloud is here.<br/>
             You couldn’t find what you were looking for?
          </p>
-         <p>
-            <Link to="/">
-            Contact Support through our HomeCloud Chat/</Link>
-         </p>
+         <p><a href="mailto:support@gethomecloud.com">Contact Support through our HomeCloud Chat</a></p>
       </Container>
    </Banner>
    <Container>

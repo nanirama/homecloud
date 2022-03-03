@@ -12,10 +12,12 @@ import DeserveSection from "../components/DeserveSection";
 import Herosection from "../components/cityPages/Herosection";
 import Attractionssection from "../components/cityPages/Attractionssection";
 import Howitworksection from "../components/cityPages/Howitworksection";
-import Servicesection from "../components/Servicesection";
 import Benefitssection from "../components/cityPages/Benefitssection";
 import Featuressection from "../components/cityPages/Featuressection";
 import Testimonialsection from "../components/Testimonialsection";
+import Services from "../components/services"
+
+import { BrowserView, TabletView, MobileView } from "react-device-detect"
 
 const CityPageTemplate = (props) => {
     const { data } = props
@@ -40,7 +42,7 @@ const CityPageTemplate = (props) => {
       <Herosection data={PageData} features={cityFeatures && cityFeatures}/>
       {cityActivities && <Attractionssection data={cityActivities} />}
       {howItWorks && <Howitworksection data={howItWorks} />}
-      <Servicesection />
+      <Services/>
       {benefits && <Benefitssection id="benefits" data={benefits} />}
       <Featuressection id="whatsincluded" />
       <Testimonialsection />
@@ -127,15 +129,16 @@ export const query = graphql`
   
 `;
 
-const Wrapper = styled.div`
-padding:80px 0 60px 0;
-@media (max-width: 800px) {
-padding:66px 0 40px 0;
+const ServicesBlock = styled.div`
+.browserview, .tabletview, .mobileview{display:none;}
+@media (min-width: 992px) {
+  .browserview{display:block;}
 }
-`;
-const Container = styled.div`
-max-width: 840px;
-margin: 0 auto;
-padding: 0 15px;
-position:relative;
+@media only screen and (min-width: 701px) and (max-width: 991px) {
+  .tabletview{display:block;}
+}
+@media (max-width: 700px) {
+  .mobileview{display:block;}
+  }
+
 `;

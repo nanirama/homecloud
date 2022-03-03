@@ -97,7 +97,7 @@ border-top-right-radius: 6px;
 @media (max-width: 767px) {
   border-bottom-left-radius: 6px;
   border-top-right-radius: 0px;
-  width:40%;
+  width:38%;
   div{
     height:200px;
   }
@@ -112,7 +112,7 @@ border-bottom-right-radius: 6px;
 @media (max-width: 767px) {
   border-bottom-left-radius: 0px;
   border-top-right-radius: 6px;
-  width:60%;
+  width:62%;
 }
 @media (max-width: 479px) {
   padding:20px 15px;
@@ -130,14 +130,20 @@ a{
     margin-left:8px;
   }
 }
+
 @media (max-width: 800px) {
 p{
   font-size:15px;
 }
 }
-@media (max-width: 399px) {
+@media (max-width: 370px) {
+  h5{
+    font-size:15px;
+    line-height:20px;
+  }
   p{
     font-size:14px;
+    line-height:18px;
   }
 }
 `;

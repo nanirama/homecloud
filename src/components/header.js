@@ -1,34 +1,46 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types"
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import { Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import SiteLogoSvg from "../assets/images/logos/logo.svg";
-import SiteLogoWhite from "../assets/images/logos/logo-white.svg";
 
 
 import styled from "styled-components";
-const SiteLogo = ({page, isStickyState})=>{
+const SiteLogo = ({page, isStickyState, SiteTLogo, SiteLogoWhite})=>{
   if(!isStickyState && page === 'home')
   {
     return(
       <>
-      <img src={SiteLogoWhite} className="desktop-logo" alt="" />
-      <img src={SiteLogoSvg} className="mobile-logo" alt="" />
-      {/* <GatsbyImage image={getImage(LogoWhite)} className="desktop-logo" />
-      <GatsbyImage image={getImage(SiteLogo)} className="mobile-logo"  /> */}
+      <GatsbyImage image={getImage(SiteLogoWhite)} className="desktop-logo" />
+      <GatsbyImage image={getImage(SiteTLogo)} className="mobile-logo"  />
       </>      
     ) 
   }
   else
   {
     return(
-      <img src={SiteLogoSvg} />
+      <GatsbyImage image={getImage(SiteTLogo)}/>
     ) 
   }
 }
 const Header = ({page}) => {
-  console.log('Page', page)
+  const { SiteLogoWhite, SiteTLogo } = useStaticQuery(
+    graphql`
+      query {        
+        SiteTLogo: file(relativePath: {eq: "logos/logo.png"}) {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 215)
+          }
+        }
+        SiteLogoWhite: file(relativePath: {eq: "logos/logo-white.png"}) {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 215)
+          }
+        }
+      }
+    `
+  )
+
   const [open, setOpen] = useState(false)
   const [isStickyState, setStickyState] = useState(false);
   useEffect(() => {
@@ -70,11 +82,11 @@ const Header = ({page}) => {
   return (
   <Wrapper className="header" page={page} isStickyState={isStickyState}>
      <Container className="headercontainer">
-        <LogoAndLinks>
+        <LogoAndLinks>          
            <Logo> 
            <Link to="/">     
-             <SiteLogo page={page} isStickyState={isStickyState}/> 
-             </Link>
+             <SiteLogo page={page} isStickyState={isStickyState} SiteTLogo={SiteTLogo} SiteLogoWhite={SiteLogoWhite}/> 
+           </Link>
            </Logo>
           
            <Nav>
@@ -115,12 +127,7 @@ padding:15px 0;
 @media (max-width: 800px) {
   padding:20px 0;
 }
-// @media (max-width: 800px) {
-//   position:inherit;
-//   display:inline-block;
-//   padding:25px 0;  
-//   min-height:70px;
-// }
+
 ${({ isStickyState, page }) => !isStickyState && page==='home' ? `
     a{
       color:#ffffff !important;
@@ -143,7 +150,7 @@ a {
   font-size:14px;
   font-weight:600;
   letter-spacing: -0.07875px;
-  @media (min-width: 801px) and  (max-width:815px)  {
+  @media (min-width: 801px) and  (max-width:820px)  {
     padding:0 17px;
   }
   &:hover{

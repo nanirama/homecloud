@@ -10,8 +10,8 @@ import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
-function Seo({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+function Seo({ description, lang, meta, title, location }) {
+  const { site, SiteLogo } = useStaticQuery(
     graphql`
       query {
         site {
@@ -19,21 +19,34 @@ function Seo({ description, lang, meta, title }) {
             title
             description
             author
+            siteUrl
           }
         }
+        SiteLogo: file(relativePath: {eq: "logos/logo-1.png"}) {
+         publicURL
+       }
       }
     `
   )
 
+  
+  
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+
+  const siteURL = site.siteMetadata.siteUrl 
+  const siteLogo = siteURL+SiteLogo.publicURL;
+  const metaImage = siteLogo
+
+  //const curl = siteURL+location || ''
+  //console.log('location', curl)
 
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={defaultTitle}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
@@ -69,7 +82,11 @@ function Seo({ description, lang, meta, title }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+       <meta name="description" content={metaDescription} />
+       {metaImage && <meta name="image" content={metaImage} />}
+       {location && <link rel="canonical" href={`${location}`} />}
+      </Helmet>
   )
 }
 

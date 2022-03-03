@@ -50,6 +50,9 @@ margin-bottom:20px;
     display: flex;
     flex-direction: column;
  }
+ .gatsby-image-wrapper{
+     width:100%;
+ }
 img{
 border-radius: 6px;
 }

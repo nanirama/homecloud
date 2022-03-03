@@ -1,11 +1,22 @@
 import React, { useContext, useState } from "react"
 import styled from "styled-components";
+import { PrismicRichText } from '@prismicio/react'
 import { Accordion, AccordionContext, useAccordionButton } from 'react-bootstrap'
 import { useStaticQuery, graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import ModalPricingContent from "./ModalPricingContent";
-import DigitizeMyHome from "../popups/DigitizeMyHome"
-const PricingSection = () => {
+import DigitizeMyHome from "../popups/DigitizeMyHome";
+
+import Icon from "../../assets/images/check-icon.png";
+
+
+const PricingSection = ({data}) => {
+const { body } = data.data
+// const addOns = body.filter((item)=>{
+//    return item.slice_type==='certificate_add_ons'
+// })
+const addOns = body[0].items
+console.log('Addons', addOns)
 const { PricingIcon} = useStaticQuery(
    graphql`
       query {
@@ -42,7 +53,7 @@ return(
    <Banner>
       <Container>
          <h1>Pricing that fits your Home</h1>
-         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+         {/* <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p> */}
       </Container>
    </Banner>
    <Container>
@@ -52,7 +63,7 @@ return(
                <Image>
                   <GatsbyImage image={getImage(PricingIcon)} />
                </Image>
-               <h4>Home Evaluation</h4>
+               <h4>Home Certification</h4>
                <h2>
                   From $399*
                   <span className="popup" onClick={() =>
@@ -72,182 +83,47 @@ return(
                <DigitizeMyHome/>
             </TextBlock>
             <Benifits>
-               <h3>Benefits:</h3>
-               <Links>
-                  <ul>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p>No need to wait for a costly scheduled home inspection.</p>
-                     </li>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p>Provided Quickly.</p>
-                     </li>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p>Review before making an offer on a home.</p>
-                     </li>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p>Provides more detailed information than a home inspection so you can get the best non-contingent offers faster.</p>
-                     </li>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p>Includes home history, documentation, and service providers.</p>
-                     </li>
-                     <li>
-                        <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                           <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                        </svg>
-                        <p> Home information is never deleted and transfers as the home changes owners.</p>
-                     </li>
-                  </ul>
-               </Links>
+               <PrismicRichText
+                    field={data.data.description.richText}
+                    className="richtext-content"
+                />
             </Benifits>
          </Grid>
       </BenifitBlk>
       <Schedule>
-         <h3>This can be added once you Schedule your Home Evaluation:</h3>
+         <h3>This can be added once you Schedule your Home Certification:</h3>
          <ScheduleItem>
-            <Item>
-               <Addon>Add-on</Addon>
-               <h4>Radon Test</h4>
-               <h5>$139</h5>
-               <Accordion>
-                  <Accordion.Item eventKey="0">
-                     <Accordion.Header>
-                        <ContextAwareToggle eventKey="0"/>
-                     </Accordion.Header>
-                     <Accordion.Body>
-                        <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
-                        <Links>
-                           <ul>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p> It can affect homes anywhere in the U.S.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>The only way to check for elevated levels of radon in your home is with testing.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>High levels of radon can be found in any building.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>This report will be added to My Home in your HomeCloud app when ready.</p>
-                              </li>
-                           </ul>
-                        </Links>
-                     </Accordion.Body>
-                  </Accordion.Item>
-               </Accordion>
-            </Item>
-            <Item>
-               <Addon>Add-on</Addon>
-               <h4>Wood Destroying Report</h4>
-               <h5>$139</h5>
-               <Accordion>
-                  <Accordion.Item eventKey="0">
-                     <Accordion.Header>
-                        <ContextAwareToggle eventKey="0"/>
-                     </Accordion.Header>
-                     <Accordion.Body>
-                        <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
-                        <Links>
-                           <ul>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p> It can affect homes anywhere in the U.S.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>The only way to check for elevated levels of radon in your home is with testing.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>High levels of radon can be found in any building.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>This report will be added to My Home in your HomeCloud app when ready.</p>
-                              </li>
-                           </ul>
-                        </Links>
-                     </Accordion.Body>
-                  </Accordion.Item>
-               </Accordion>
-            </Item>
-            <Item>
-               <Addon>Add-on</Addon>
-               <h4>Well Water Test</h4>
-               <h5>$149</h5>
-               <Accordion>
-                  <Accordion.Item eventKey="0">
-                     <Accordion.Header>
-                        <ContextAwareToggle eventKey="0"/>
-                     </Accordion.Header>
-                     <Accordion.Body>
-                        <p>Radon is colorless, odorless, and extremely carcinogenic (cancer-causing). Get a radon test once and add it to your HomeCloud app to the benefit of all future home-owners.</p>
-                        <Links>
-                           <ul>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p> It can affect homes anywhere in the U.S.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>The only way to check for elevated levels of radon in your home is with testing.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>High levels of radon can be found in any building.</p>
-                              </li>
-                              <li>
-                                 <svg width="20" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.8332 8.99984C16.8332 13.6022 13.1022 17.3332 8.49984 17.3332C3.89745 17.3332 0.166504 13.6022 0.166504 8.99984C0.166504 4.39745 3.89745 0.666504 8.49984 0.666504C13.1022 0.666504 16.8332 4.39745 16.8332 8.99984ZM7.53593 13.4123L13.7187 7.22947C13.9287 7.01953 13.9287 6.6791 13.7187 6.46916L12.9584 5.70884C12.7485 5.49886 12.408 5.49886 12.1981 5.70884L7.15575 10.7511L4.80162 8.39698C4.59167 8.18704 4.25125 8.18704 4.04127 8.39698L3.28095 9.1573C3.07101 9.36724 3.07101 9.70767 3.28095 9.91761L6.77558 13.4122C6.98556 13.6222 7.32595 13.6222 7.53593 13.4123V13.4123Z" fill="#1FAD64"/>
-                                 </svg>
-                                 <p>This report will be added to My Home in your HomeCloud app when ready.</p>
-                              </li>
-                           </ul>
-                        </Links>
-                     </Accordion.Body>
-                  </Accordion.Item>
-               </Accordion>
-            </Item>
+            { addOns && addOns.map((item, index)=>{
+               const { addon } = item
+               const { document } = addon
+               const { data } = document
+               const { name, price_1, price_2, short_description, description } = data
+               return(
+                  <Item key={index}>
+                     <Addon>Add-on</Addon>
+                     <h4>{name.text}</h4>
+                     <h5>{price_1}</h5>
+                     {price_2 && <h5>{price_2}</h5>}
+                     <p>{short_description}</p>
+                     <Accordion>
+                        <Accordion.Item eventKey="0">
+                           <Accordion.Header>
+                              <ContextAwareToggle eventKey="0"/>
+                           </Accordion.Header>
+                           <Accordion.Body>
+                              <PriceRichtextDescription>
+                                 <PrismicRichText
+                                    field={description.richText}
+                                    className="richtext-description"
+                                 />
+                              </PriceRichtextDescription>                             
+                           </Accordion.Body>
+                        </Accordion.Item>
+                     </Accordion>
+                  </Item>
+               )
+            })}
+            
          </ScheduleItem>
       </Schedule>
    </Container>
@@ -255,8 +131,41 @@ return(
 );
 };
 export default PricingSection;
-
-        
+const PriceRichtextDescription = styled.div`
+// padding:0px;
+// margin:0px;
+// widtH:100%;
+// overflow:hidden;
+ul{
+   margin:0px 0px 0px 10px;
+   list-style: disc !important;
+}
+ul li {
+   width: 100%;
+   margin-bottom: 10px;
+   float:left;
+   font-size:14px;
+   line-height:20px;
+   font-weight:400;
+   color:#333D47;
+   padding-left:5px;
+   list-style: disc !important;
+   // background-image:url(${Icon});
+   // background-position:top left;
+   // background-repeat:no-repeat;
+}
+p{
+   font-size:14px;
+   line-height:20px;
+   color:#333D47;
+   & > strong{
+      font-weight:700;
+      font-size:14px;
+      line-height:20px;
+      color:#333D47;
+   }
+}
+`;        
 const Wrapper = styled.div`
 padding:80px 0 30px 0;
 
@@ -354,14 +263,6 @@ margin-top:20px;
 display:inline-block;
 }
 `;
-const Button = styled.div`
-padding:17px 25px !important;
-margin-bottom:20px;
-
-@media (max-width: 400px) {
-    width:100%;
-}
-`;
 const Benifits = styled.div`
 border-radius:6px;
 background: linear-gradient(218.37deg, #0047AD 32.08%, #0A5ACB 98.3%);
@@ -376,30 +277,18 @@ h3{
    font-weight:700;
    margin-bottom:20px;
 }
-ul li svg{
-   padding-right:2% !important;
-   width:8% !important;}
-ul li p{
-   width:90% !important;
-}
-`;
-const Links = styled.div`
-ul li svg{
-   float:left;
-   padding-right:3%;
-   width:12%;
-}
 ul li {
-   width:100%;
-   margin-bottom:20px;
-}
-ul li p{
-   width:84%;
+   width: 100%;
+   margin-bottom: 20px;
    float:left;
-   margin:0;color:#fff;
+   color:#fff;
    font-size:14px;
    line-height:20px;
    font-weight:400;
+   padding-left:30px;
+   background-image:url(${Icon});
+   background-position:top 3px left;
+   background-repeat:no-repeat;
 }
 `;
 const Schedule = styled.div`
@@ -413,18 +302,29 @@ h3{
 }
 `;
 const ScheduleItem = styled.div`
+// display: flex;
+// flex-direction: row;
+// justify-content: flex-start;
+// align-items: flex-start;
+// @media (max-width: 768px) {
+//    flex-direction: column;
+// }
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 10px;
     @media (min-width: 768px) {
       grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px 15px;     
+      grid-gap: 10px 15px;   
+      align-items: start;  
     }
 `;
+const Item2 = styled.div`
+border:1px solid #DDE1E9;
+`
 const Item = styled.div`
 height:auto !important;
-display:flex;
 flex-direction:column;
+display:flex;
 border:1px solid #DDE1E9;
 padding:20px;
 border-radius: 6px;
@@ -445,9 +345,6 @@ p{
    font-size:14px;
    line-height:20px;
    color:#333D47;
-}
-ul li p{
-   color:#333D47 !important;
 }
 .accordion-item{
    border:none !important;

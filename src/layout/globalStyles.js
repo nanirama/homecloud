@@ -36,7 +36,7 @@ ol li{font-size: 14px;line-height: 20px;letter-spacing: -0.07875px;color: #333D4
 .react-tabs__tab--selected {border-radius:0 !important; border:none !important;color: #236DDE;}
 .react-tabs__tab--selected:before{ content:''; position:absolute;bottom:-15px; left:0; background-color:#236DDE; width:100%;height:4px;}
 .react-tabs__tab:focus {box-shadow: 0 0 0px hsl(208, 99%, 50%) !important; border-color:none !important;}
-
+.react-tabs__tab:hover{color: #236DDE;}
 
 .modal-backdrop.show {opacity: .95;}
 

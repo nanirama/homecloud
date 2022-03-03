@@ -7,7 +7,7 @@ const Footer = () => {
    const { CityPages } = useStaticQuery(
       graphql`
         query {
-         CityPages : allPrismicCityLandingPages(sort: {fields: prismicId, order: ASC}) {
+         CityPages : allPrismicCityLandingPages(sort: {fields: data___title___text, order: ASC}) {
             edges {
               node {
                 uid
@@ -35,9 +35,9 @@ const Footer = () => {
                   </Logo>
                   </Link>
                   <Contact>
-                  <p>Call 919-295-0975</p>
-                     <p><Link to="">support@gethomecloud.com</Link></p>
-                     </Contact>
+                     <p>Call <a href="tel:9192950975">919-295-0975</a></p>
+                     <p><a href="mailto:support@gethomecloud.com">support@gethomecloud.com</a></p>
+                  </Contact>
                </Item>
                <Item>
                   <FooterLinks>

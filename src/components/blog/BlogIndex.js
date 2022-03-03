@@ -10,7 +10,7 @@ return(
    <Banner>
       <Container>
          <h1>Blog</h1>
-         <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p>
+         {/* <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking.</p> */}
       </Container>
    </Banner>
    <Container>
@@ -19,73 +19,6 @@ return(
                    { data && data.map((item,index)=> <BlogItem key={index} data={item}/>)}
                 </Masonry>
             </ResponsiveMasonry>
-      <Grid>
-         {/* <BlogItem/> */}
-         {/* <Item>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img1.png" alt="" />
-               </BlogImage>
-               <Date>Jan 2, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img2.png" alt="" />
-               </BlogImage>
-               <Date>Feb 19, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img3.png" alt="" />
-               </BlogImage>
-               <Date>Feb 22, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-         </Item>
-         <Item>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img4.png" alt="" />
-               </BlogImage>
-               <Date>Feb 16, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img5.png" alt="" />
-               </BlogImage>
-               <Date>Feb 20, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-            <BlogItem>
-               <BlogImage>
-                  <StaticImage src="../../assets/images/blog-img6.png" alt="" />
-               </BlogImage>
-               <Date>Feb 27, 2022</Date>
-               <h5>Phasellus rhoncus quis nunc auctor consequat</h5>
-               <p>Nullam ornare pellentesque justo, ultrices hendrerit arcu interdum sodales. Quisque sodales arcu et ultricies volutpat.</p>
-               <Link to="/blogsingle">
-               Read More</Link>
-            </BlogItem>
-         </Item> */}
-      </Grid>
    </Container>
 </Wrapper>
 );

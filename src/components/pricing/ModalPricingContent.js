@@ -84,8 +84,7 @@ return (
                   <tr>
                      <td>+6,000</td>
                      <td>
-                        <Link to="/">
-                        Contact us for a quote</Link>
+                        <a href="mailto:support@gethomecloud.com">Contact us for a quote</a>
                      </td>
                   </tr>
                </tbody>
