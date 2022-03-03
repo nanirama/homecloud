@@ -4,7 +4,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout"
 import DeserveSection from "../components/DeserveSection";
-import SEO from '../components/SEO';
+import SEO from "../components/seo"
 import Blog from '../components/blog';
 // import { Header } from '../components/Blog';
 // import styled from "styled-components";
