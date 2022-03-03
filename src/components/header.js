@@ -4,42 +4,29 @@ import AnchorLink from 'react-anchor-link-smooth-scroll'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 
+import SiteColorLogo from "../../svg/SiteColorLogo.svg";
+import SiteWhiteLogo from "../../svg/SiteWhiteLogo.svg";
+
 
 import styled from "styled-components";
-const SiteLogo = ({page, isStickyState, SiteTLogo, SiteLogoWhite})=>{
+const SiteLogo = ({page, isStickyState})=>{
   if(!isStickyState && page === 'home')
   {
     return(
       <>
-      <GatsbyImage image={getImage(SiteLogoWhite)} className="desktop-logo" />
-      <GatsbyImage image={getImage(SiteTLogo)} className="mobile-logo"  />
+      <SiteWhiteLogo className="desktop-logo" />
+      <SiteColorLogo className="mobile-logo"  />
       </>      
     ) 
   }
   else
   {
     return(
-      <GatsbyImage image={getImage(SiteTLogo)}/>
+      <SiteColorLogo />
     ) 
   }
 }
 const Header = ({page}) => {
-  const { SiteLogoWhite, SiteTLogo } = useStaticQuery(
-    graphql`
-      query {        
-        SiteTLogo: file(relativePath: {eq: "logos/logo.png"}) {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 215)
-          }
-        }
-        SiteLogoWhite: file(relativePath: {eq: "logos/logo-white.png"}) {
-          childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 215)
-          }
-        }
-      }
-    `
-  )
 
   const [open, setOpen] = useState(false)
   const [isStickyState, setStickyState] = useState(false);
@@ -84,8 +71,8 @@ const Header = ({page}) => {
      <Container className="headercontainer">
         <LogoAndLinks>          
            <Logo> 
-           <Link to="/">     
-             <SiteLogo page={page} isStickyState={isStickyState} SiteTLogo={SiteTLogo} SiteLogoWhite={SiteLogoWhite}/> 
+           <Link to="/">   
+             <SiteLogo page={page} isStickyState={isStickyState}/> 
            </Link>
            </Logo>
           

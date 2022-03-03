@@ -47,6 +47,7 @@ export const query = graphql`
           html
           text 
         }
+        publish_date
         excerpts {
           html
           text

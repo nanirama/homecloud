@@ -2,10 +2,11 @@ import React, { useState } from "react"
 import styled from "styled-components";
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby";
+import moment from 'moment';
 
 const BlogItem = ({data}) => {
     console.log('Blog Data Item',data)
-    const { title, excerpts, featured_image } = data.node.data
+    const { title, excerpts, featured_image, publish_date } = data.node.data
     return(
         <BlogListItem>
                <BlogImage>
@@ -13,7 +14,7 @@ const BlogItem = ({data}) => {
                         <GatsbyImage image={getImage(featured_image)} alt={title.text} />
                     </Link>
                </BlogImage>
-               <Date>Jan 2, 2022</Date>
+               <Date>{moment(publish_date).format('MMM D, YYYY')}</Date>
                <h5>{title.text}</h5>
                <p>{excerpts.text}</p>
                <Link to={data.node.uid}>Read More</Link>

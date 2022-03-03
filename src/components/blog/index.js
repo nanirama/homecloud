@@ -3,10 +3,10 @@ import styled from "styled-components";
 import { PrismicRichText } from '@prismicio/react'
 import { GatsbyImage, getImage, StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby";
+import moment from 'moment';
 import AuthorInfo from "./AuthorInfo";
-import Share from './Share'
 const Blog = ({data, location}) => {
-const { title, excerpts, content, featured_image, author } = data
+const { title, excerpts, content, featured_image, author, publish_date } = data
 const stwitterHandle = "_MsLinda";
 return(
     <BlogSection>
@@ -18,7 +18,7 @@ return(
                 Back
                 </Link>
               </BackText>
-              <Date>Jan 2, 2022</Date>
+              <Date>{moment(publish_date).format('MMM D, YYYY')}</Date>
               <Heading>{title.text}</Heading>
               <Paragraph>{excerpts.text}</Paragraph>
               <PostInfo>
