@@ -135,6 +135,7 @@ ${({ isStickyState, page }) => !isStickyState && page==='home' ? `
     li:last-child a{
       border:1px solid #fff !important;
     }
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0) 100%);
 ` : `
 box-shadow: 0 2px 24px 0 rgb(0 0 0 / 15%);
   a{

@@ -4,19 +4,27 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout"
 import DeserveSection from "../components/DeserveSection";
-// import SEO from '../components/SEO';
+import SEO from '../components/SEO';
 import Blog from '../components/blog';
 // import { Header } from '../components/Blog';
 // import styled from "styled-components";
 
-const BlogTemplate = ({data, location}) => {
+const BlogTemplate = (props) => {
+  const {data, location} = props
   const {
     prismicPost: { data: post },
   } = data;
+  const title = post.meta_title ? post.meta_title : 'Home Cloud'
+  const desc = post.meta_description ? post.meta_description : 'Home Cloud Meta Desccription'
 
   if (!post) return null;
   return (
     <Layout>
+      <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       />
       <Wrapper>
         <Container>
             <Blog data={post} location={location}/>
@@ -33,6 +41,8 @@ export const query = graphql`
   query BlogBySlug($uid: String!) {
     prismicPost(uid: { eq: $uid }) {
       data {
+        meta_title
+        meta_description
         title{
           html
           text 

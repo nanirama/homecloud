@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "styled-components";
+import { PrismicRichText } from '@prismicio/react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Attractionssection = ({data}) => {
@@ -8,7 +9,7 @@ return(
 <Wrapper>
    <Container>
       <Heading>{BenefitsHeading.heading}</Heading>
-      <p>{BenefitsHeading.description1}</p>
+      {BenefitsHeading.description1 && <div dangerouslySetInnerHTML={{ __html: BenefitsHeading.description1.html }} className="w-100" ></div>}
       <Grid>
          { items && items.map((item, index)=>{
             return(
@@ -19,7 +20,8 @@ return(
                      </Image>
                      <TextBlk>
                         <h5>{item.heading}</h5>
-                        <p>{item.description1}</p>
+                        <p>{item.description1}</p>                       
+                       
                         <a href={item.link} target="_blank">
                         See More 
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -52,6 +54,9 @@ const Container = styled.div`
 max-width: 1100px;
 margin: 0 auto;
 padding: 0 15px;
+.w-100{
+  
+}
 `;
 const Heading = styled.h2`
 font-size: 32px;

@@ -15,7 +15,7 @@ return(
          <ContentBlock>
             <LeftBlock>
                <h2>{sub_heading}</h2>
-               <p>{description}</p>
+               <p>{description.text}</p>
                <DigitizeMyHome/>
             </LeftBlock>
             <RightBlock>

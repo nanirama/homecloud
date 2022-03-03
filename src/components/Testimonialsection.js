@@ -149,6 +149,9 @@ const Grid = styled.div`
 const Item = styled.div``
 const TmBox = styled.div`
   padding: 0 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
   @media (max-width: 767px) {
     padding: 0px;
   }
@@ -159,7 +162,8 @@ const TmInner = styled.div`
   background-color: #fff;
   padding: 24px;
   text-align: left;
-  min-height: 250px;
+  min-height: 300px;
+
   @media (max-width: 480px) {
     padding: 24px 15px;
   }

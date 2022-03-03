@@ -9,21 +9,27 @@ const Servicesection = () => {
   const {
     ServiceBanner,
     ServiceBanner2,
-    ServiceLineDot2,
-    ServiceLineDot4,
-    ServiceLineDot7,
+    ServiceLineDot3,
+    ServiceLineDot9,
+    ServiceLineDot10,
+    ServiceLineDot11,
+    ServiceLineDot12,
   } = useStaticQuery(
     graphql`
       query {
-        ServiceBanner: file(relativePath: { eq: "servicebanner.jpg" }) {
+        ServiceBanner: file(relativePath: { eq: "servicebanner-tablet.jpg" }) {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            fluid(quality: 90, maxWidth: 1024) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
           publicURL
         }
-        ServiceBanner2: file(relativePath: { eq: "servicebanner2.jpg" }) {
+        ServiceBanner2: file(relativePath: { eq: "servicebanner2-tablet.jpg" }) {
           childImageSharp {
-            gatsbyImageData(layout: FULL_WIDTH)
+            fluid(quality: 90, maxWidth: 1024) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
           }
           publicURL
         }
@@ -32,14 +38,29 @@ const Servicesection = () => {
             gatsbyImageData(layout: FIXED, width: 115)
           }
         }
-        ServiceLineDot4: file(relativePath: { eq: "line-dot4.png" }) {
+        ServiceLineDot3: file(relativePath: { eq: "line-dot3.png" }) {
           childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 63)
+            gatsbyImageData(layout: FIXED, width: 94)
           }
         }
-        ServiceLineDot7: file(relativePath: { eq: "line-dot7.png" }) {
+        ServiceLineDot9: file(relativePath: { eq: "line-dot9.png" }) {
           childImageSharp {
-            gatsbyImageData(layout: FIXED, width: 125)
+            gatsbyImageData(layout: FIXED, width: 58)
+          }
+        }
+        ServiceLineDot10: file(relativePath: { eq: "line-dot10.png" }) {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 38)
+          }
+        }
+        ServiceLineDot11: file(relativePath: { eq: "line-dot11.png" }) {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 95)
+          }
+        }
+        ServiceLineDot12: file(relativePath: { eq: "line-dot12.png" }) {
+          childImageSharp {
+            gatsbyImageData(layout: FIXED, width: 65)
           }
         }
       }
@@ -52,27 +73,55 @@ const Servicesection = () => {
   const bgImage1 = convertToBgImage(image1)
   const bgImage2 = convertToBgImage(image2)
 
+  const serviceBg1 = ServiceBanner.childImageSharp.fluid.srcWebp
+  const serviceBg2 = ServiceBanner2.childImageSharp.fluid.srcWebp
+
   const [anim, setAnim] = useState(true)
   const ChangeAnim = () => {
     setAnim(!anim)
     if (anim) {
       gsap.to(".circle1", 2, {
-        x: 20,
-        y: -10,
+        x: 0,
+        y: 0,
+        opacity: 0,
+        scale: 0.1,
         ease: "circle",
       })
       gsap.to(".circle2", 1, {
-        x: -20,
-        y: 0,
+        x: 200,
+        y: -120,
+        ease: "circle",
+      }) 
+      gsap.to(".circle3", 1, {
+        x: -100,
+        y: 130,
+        ease: "circle",
+      }) 
+      gsap.to(".circle4", 1, {
+        x: -30,
+        y: 110,
         ease: "circle",
       })
+
     } else {
       gsap.to(".circle1", 2, {
         x: 0,
         y: 0,
+        opacity: 1,
+        scale: 1,
         ease: "circle",
       })
       gsap.to(".circle2", 1, {
+        x: 0,
+        y: 0,
+        ease: "circle",
+      })
+      gsap.to(".circle3", 1, {
+        x: 0,
+        y: 0,
+        ease: "circle",
+      })
+      gsap.to(".circle4", 1, {
         x: 0,
         y: 0,
         ease: "circle",
@@ -82,8 +131,8 @@ const Servicesection = () => {
   useEffect(() => {}, [anim])
   return (
     <Wrapper>
-      <BgChange
-        imgUrl={anim ? ServiceBanner.publicURL : ServiceBanner2.publicURL}
+        <BgChange
+        imgUrl={anim ? serviceBg1 : serviceBg2}
       >
         <Container>
           <ArrowLeft onClick={ChangeAnim}>
@@ -101,12 +150,122 @@ const Servicesection = () => {
             </svg>
           </ArrowLeft>
           <ServiceBlock>
-          
-            <ServBox className="circle1">
+          <ServBox className="circle1">
+              {anim ? (
+                <>
+                <Image>
+                <GatsbyImage image={getImage(ServiceLineDot9)} />
+               </Image>
+                <Box>
+                  <Title>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.2917 1.66699H2.70841C2.13224 1.66699 1.66675 2.13249 1.66675 2.70866V6.87533C1.66675 7.4515 2.13224 7.91699 2.70841 7.91699H17.2917C17.8679 7.91699 18.3334 7.4515 18.3334 6.87533V2.70866C18.3334 2.13249 17.8679 1.66699 17.2917 1.66699ZM2.70841 18.3337H12.0834V14.167H2.70841V18.3337ZM7.91675 13.1253H17.2917V8.95866H7.91675V13.1253ZM2.70841 8.95866V13.1253H6.87508V8.95866H2.70841ZM13.1251 18.3337H17.2917V14.167H13.1251V18.3337Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <h6>Stairway</h6>
+                  </Title>
+                  <p>Material: Wood</p>
+                  <p>
+                    Handrails{" "}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.7571 6.54915L7.95829 10.348L6.2428 8.63249C6.03935 8.42904 5.70959 8.42904 5.50647 8.63249C5.30334 8.83594 5.30302 9.16569 5.50647 9.36882L7.5898 11.4521C7.69137 11.5524 7.82483 11.6045 7.95829 11.6045C8.09176 11.6045 8.22483 11.5536 8.32646 11.4519L12.4931 7.28522C12.6966 7.08177 12.6966 6.75202 12.4931 6.54889C12.2897 6.34577 11.9589 6.34408 11.7571 6.54915ZM8.99996 0.666992C4.3971 0.666992 0.666626 4.39746 0.666626 9.00033C0.666626 13.6032 4.3971 17.3337 8.99996 17.3337C13.6028 17.3337 17.3333 13.6032 17.3333 9.00033C17.3333 4.39746 13.6028 0.666992 8.99996 0.666992ZM8.99996 16.292C4.97978 16.292 1.70829 13.0205 1.70829 9.00033C1.70829 4.98014 4.97978 1.70866 8.99996 1.70866C13.0201 1.70866 16.2916 4.98014 16.2916 9.00033C16.2916 13.0205 13.0201 16.292 8.99996 16.292Z"
+                        fill="#30CD7C"
+                      />
+                    </svg>
+                  </p>
+                  <p>
+                    Lightning{" "}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.7571 6.54915L7.95829 10.348L6.2428 8.63249C6.03935 8.42904 5.70959 8.42904 5.50647 8.63249C5.30334 8.83594 5.30302 9.16569 5.50647 9.36882L7.5898 11.4521C7.69137 11.5524 7.82483 11.6045 7.95829 11.6045C8.09176 11.6045 8.22483 11.5536 8.32646 11.4519L12.4931 7.28522C12.6966 7.08177 12.6966 6.75202 12.4931 6.54889C12.2897 6.34577 11.9589 6.34408 11.7571 6.54915ZM8.99996 0.666992C4.3971 0.666992 0.666626 4.39746 0.666626 9.00033C0.666626 13.6032 4.3971 17.3337 8.99996 17.3337C13.6028 17.3337 17.3333 13.6032 17.3333 9.00033C17.3333 4.39746 13.6028 0.666992 8.99996 0.666992ZM8.99996 16.292C4.97978 16.292 1.70829 13.0205 1.70829 9.00033C1.70829 4.98014 4.97978 1.70866 8.99996 1.70866C13.0201 1.70866 16.2916 4.98014 16.2916 9.00033C16.2916 13.0205 13.0201 16.292 8.99996 16.292Z"
+                        fill="#30CD7C"
+                      />
+                    </svg>
+                  </p>
+                </Box>
+                </>
+              ) : (
+                <>
+               <Image>
+                <GatsbyImage image={getImage(ServiceLineDot10)} />
+               </Image>
+                <Box>
+                  <Title>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M17.2917 1.66699H2.70841C2.13224 1.66699 1.66675 2.13249 1.66675 2.70866V6.87533C1.66675 7.4515 2.13224 7.91699 2.70841 7.91699H17.2917C17.8679 7.91699 18.3334 7.4515 18.3334 6.87533V2.70866C18.3334 2.13249 17.8679 1.66699 17.2917 1.66699ZM2.70841 18.3337H12.0834V14.167H2.70841V18.3337ZM7.91675 13.1253H17.2917V8.95866H7.91675V13.1253ZM2.70841 8.95866V13.1253H6.87508V8.95866H2.70841ZM13.1251 18.3337H17.2917V14.167H13.1251V18.3337Z"
+                        fill="white"
+                      />
+                    </svg>
+                    <h6>Stairway</h6>
+                  </Title>
+                  <p>Material: Wrought Iron</p>
+                  <p>
+                    Handrails{" "}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.7571 6.54915L7.95829 10.348L6.2428 8.63249C6.03935 8.42904 5.70959 8.42904 5.50647 8.63249C5.30334 8.83594 5.30302 9.16569 5.50647 9.36882L7.5898 11.4521C7.69137 11.5524 7.82483 11.6045 7.95829 11.6045C8.09176 11.6045 8.22483 11.5536 8.32646 11.4519L12.4931 7.28522C12.6966 7.08177 12.6966 6.75202 12.4931 6.54889C12.2897 6.34577 11.9589 6.34408 11.7571 6.54915ZM8.99996 0.666992C4.3971 0.666992 0.666626 4.39746 0.666626 9.00033C0.666626 13.6032 4.3971 17.3337 8.99996 17.3337C13.6028 17.3337 17.3333 13.6032 17.3333 9.00033C17.3333 4.39746 13.6028 0.666992 8.99996 0.666992ZM8.99996 16.292C4.97978 16.292 1.70829 13.0205 1.70829 9.00033C1.70829 4.98014 4.97978 1.70866 8.99996 1.70866C13.0201 1.70866 16.2916 4.98014 16.2916 9.00033C16.2916 13.0205 13.0201 16.292 8.99996 16.292Z"
+                        fill="#30CD7C"
+                      />
+                    </svg>
+                  </p>
+                  <p>
+                  Risers & Treads{" "}
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 18 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M11.7571 6.54915L7.95829 10.348L6.2428 8.63249C6.03935 8.42904 5.70959 8.42904 5.50647 8.63249C5.30334 8.83594 5.30302 9.16569 5.50647 9.36882L7.5898 11.4521C7.69137 11.5524 7.82483 11.6045 7.95829 11.6045C8.09176 11.6045 8.22483 11.5536 8.32646 11.4519L12.4931 7.28522C12.6966 7.08177 12.6966 6.75202 12.4931 6.54889C12.2897 6.34577 11.9589 6.34408 11.7571 6.54915ZM8.99996 0.666992C4.3971 0.666992 0.666626 4.39746 0.666626 9.00033C0.666626 13.6032 4.3971 17.3337 8.99996 17.3337C13.6028 17.3337 17.3333 13.6032 17.3333 9.00033C17.3333 4.39746 13.6028 0.666992 8.99996 0.666992ZM8.99996 16.292C4.97978 16.292 1.70829 13.0205 1.70829 9.00033C1.70829 4.98014 4.97978 1.70866 8.99996 1.70866C13.0201 1.70866 16.2916 4.98014 16.2916 9.00033C16.2916 13.0205 13.0201 16.292 8.99996 16.292Z"
+                        fill="#30CD7C"
+                      />
+                    </svg>
+                  </p>
+                </Box>
+                </>
+              )}
+            </ServBox>
+            <ServBox className="circle2">
               {anim ? (
                 <>
                  <Image>
-                <GatsbyImage image={getImage(ServiceLineDot2)} />
+                <GatsbyImage image={getImage(ServiceLineDot10)} />
               </Image>
                 <Box>
                   <Title>
@@ -122,7 +281,7 @@ const Servicesection = () => {
                         fill="white"
                       />
                     </svg>
-                    <h6>Cooktop</h6>
+                    <h6>Oven</h6>
                   </Title>
                   <p>Remaining Life: 6 yrs</p>
                   <p>Positive Reviews</p>
@@ -171,17 +330,20 @@ const Servicesection = () => {
                     </p>
                 </Box>
                 <Image>
-                <GatsbyImage image={getImage(ServiceLineDot7)} />
+                <GatsbyImage image={getImage(ServiceLineDot11)} />
               </Image>
                 </>
               )}
             </ServBox>
            
-            <ServBox className="circle2">
+            <ServBox className="circle3">
               {anim ? (
                 <>
+                <Image>
+                <GatsbyImage image={getImage(ServiceLineDot3)} />
+              </Image>
                 <Box>
-                  <Title>
+                <Title>
                     <svg
                       width="20"
                       height="20"
@@ -190,32 +352,17 @@ const Servicesection = () => {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M11.6666 11.6663H8.33329C7.87314 11.6663 7.49996 12.0395 7.49996 12.4997V15.833C7.49996 16.2932 7.87314 16.6663 8.33329 16.6663H11.6666C12.1268 16.6663 12.5 16.2932 12.5 15.833V12.4997C12.5 12.0395 12.1268 11.6663 11.6666 11.6663ZM6.66663 4.16634C6.66663 3.70618 6.29345 3.33301 5.83329 3.33301H2.49996C2.0398 3.33301 1.66663 3.70618 1.66663 4.16634V7.49967C1.66663 7.95983 2.0398 8.33301 2.49996 8.33301H4.99267L6.89788 11.6674C7.18694 11.171 7.71871 10.833 8.33329 10.833H8.34058L6.66663 7.90358V6.66634H12.5V4.99967H6.66663V4.16634ZM17.5 3.33301H14.1666C13.7065 3.33301 13.3333 3.70618 13.3333 4.16634V7.49967C13.3333 7.95983 13.7065 8.33301 14.1666 8.33301H17.5C17.9601 8.33301 18.3333 7.95983 18.3333 7.49967V4.16634C18.3333 3.70618 17.9601 3.33301 17.5 3.33301Z"
+                        d="M15.2083 1.66699H4.79167C4.21647 1.66699 3.75 2.13346 3.75 2.70866V10.0003H16.25V2.70866C16.25 2.13346 15.7835 1.66699 15.2083 1.66699ZM3.75 12.0837C3.75 13.2344 4.68294 14.167 5.83333 14.167H7.91667V16.2503C7.91667 17.401 8.84961 18.3337 10 18.3337C11.1504 18.3337 12.0833 17.401 12.0833 16.2503V14.167H14.1667C15.3171 14.167 16.25 13.2344 16.25 12.0837V11.042H3.75V12.0837ZM10 15.4691C10.4313 15.4691 10.7812 15.8187 10.7812 16.2503C10.7812 16.6816 10.4313 17.0316 10 17.0316C9.56868 17.0316 9.21875 16.6816 9.21875 16.2503C9.21875 15.8187 9.56868 15.4691 10 15.4691Z"
                         fill="white"
                       />
                     </svg>
-                    <h6>Misc</h6>
+                    <h6>Paint Color</h6>
                   </Title>
-                  <p>Garbage Disposal</p>
-                  <p>
-                    No Drain Air Gap{" "}
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 18 18"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M6.54883 6.54915C6.75066 6.34408 7.08269 6.34408 7.28451 6.54915L9.00001 8.26465L10.7155 6.54915C10.9173 6.34408 11.2494 6.34408 11.4512 6.54915C11.6563 6.75098 11.6563 7.08301 11.4512 7.28483L9.73568 9.00033L11.4512 10.7158C11.6563 10.9176 11.6563 11.2497 11.4512 11.4515C11.2494 11.6566 10.9173 11.6566 10.7155 11.4515L9.00001 9.736L7.28451 11.4515C7.08269 11.6566 6.75066 11.6566 6.54883 11.4515C6.34376 11.2497 6.34376 10.9176 6.54883 10.7158L8.26433 9.00033L6.54883 7.28483C6.34376 7.08301 6.34376 6.75098 6.54883 6.54915ZM17.3333 9.00033C17.3333 13.6032 13.6029 17.3337 9.00001 17.3337C4.39714 17.3337 0.666672 13.6032 0.666672 9.00033C0.666672 4.39746 4.39714 0.666992 9.00001 0.666992C13.6029 0.666992 17.3333 4.39746 17.3333 9.00033ZM9.00001 1.70866C4.97331 1.70866 1.70834 4.97363 1.70834 9.00033C1.70834 13.027 4.97331 16.292 9.00001 16.292C13.0267 16.292 16.2917 13.027 16.2917 9.00033C16.2917 4.97363 13.0267 1.70866 9.00001 1.70866Z"
-                        fill="#DB4343"
-                      />
-                    </svg>
-                  </p>
+                  <p>Benjamin Moore</p>
+                  <p>Paper White</p>
+                  <p>Code: OC-55</p>
+                  <p>1 gal Extra</p>
                 </Box>
-                <Image>
-                <GatsbyImage image={getImage(ServiceLineDot4)} />
-              </Image>
               </>
               ) : (
                 <>
@@ -246,7 +393,7 @@ const Servicesection = () => {
                   </p>
                 </Box>
                 <Image>
-                <GatsbyImage image={getImage(ServiceLineDot7)} />
+                <GatsbyImage image={getImage(ServiceLineDot12)} />
               </Image>
               </>
               )}
@@ -254,7 +401,7 @@ const Servicesection = () => {
             </ServBox>
           </ServiceBlock>
           {anim ? (
-            <Content>
+            <Content className="circle4">
               <Heading>
                 Pictures{" "} 
                 <svg
@@ -277,7 +424,7 @@ const Servicesection = () => {
               </p>
             </Content>
           ) : (
-            <Content>
+            <Content className="circle4">
               <Heading>
                 Pictures{" "}
                 <svg
@@ -329,7 +476,7 @@ const BgChange = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  min-height: 500px;
+  min-height: 430px;
   position: relative;
 
   @media (max-width: 599px) {
@@ -352,8 +499,8 @@ const BgChange = styled.div`
   }
 `
 const Wrapper = styled.div`
-  content-visibility: auto;
-  contain-intrinsic-size: 500px;
+  // content-visibility: auto;
+  // contain-intrinsic-size: 500px;
   position: relative;
   .servicebanner-bg {
     &:before {
@@ -386,14 +533,25 @@ const ServBox = styled.div`
   display: flex;
   flex-direction: row;
   &:nth-child(1) {
-    right: 2%;
+    left: 0%;
     top: 0;
-    margin-top:30px;
+    margin-top:230px;
+    span{
+      margin-top:-100px;
+    }
   }
   &:nth-child(2) {
-    right: 2%;
+    left: 30%;
     top: 0%;
-    margin-top: 230px;
+    margin-top: 120px;
+    span{
+      margin-top:0px;
+    }
+  }
+  &:nth-child(3) {
+    left: 60%;
+    top: 0%;
+    margin-top: 80px;
   }
   
   p {
@@ -410,19 +568,11 @@ const Box = styled.div`
   background: rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   padding: 12px 16px;
-  width: 180px;
-  &:nth-child(2) {
-    @media (max-width: 330px) {
-      width: 160px;
-    }
-    @media (max-width: 315px) {
-      width: 150px;
-    }
-  }
-`
+  width: 170px;
+`;
 const Image = styled.span`
-  margin-top: 45px;
-`
+  margin-top: 20px;
+`;
 const Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -436,30 +586,30 @@ const Title = styled.div`
 `
 const Content = styled.div`
   position: absolute;
-  top: 40%;
-  left: 5%;
+  top: 5%;
+  left: 10%;
 
   p {
     color: #fff;
     max-width: 275px;
   }
-`
+`;
 const Heading = styled.h2`
   color: #fff;
   font-size: 32px;
   line-height: 43px;
   letter-spacing: -0.44px;
   margin-bottom: 10px;
-`
+`;
 const ArrowLeft = styled.div`
   position: absolute;
   top: 50%;
   left: 15px;
   cursor: pointer;
-`
+`;
 const ArrowRight = styled.div`
   position: absolute;
   top: 50%;
   right: 15px;
   cursor: pointer;
-`
+`;

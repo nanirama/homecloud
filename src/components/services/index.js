@@ -13,12 +13,12 @@ const Services = props => {
       <div className="desktop">
         <Servicesection />
       </div>
-      {/* <div className="tablet">
+      <div className="tablet">
         <ServiceTabletsection />
       </div>
       <div className="mobile">
         <ServiceMobilesection />
-      </div> */}
+      </div>
     </ServicesBlock>
   )
 }
@@ -30,12 +30,12 @@ const ServicesBlock = styled.div`
   .mobile {
     display: none;
   }
-  @media (min-width: 992px) {
+  @media (min-width: 1025px) {
     .desktop {
       display: block;
     }
   }
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .tablet {
       display: block;
     }

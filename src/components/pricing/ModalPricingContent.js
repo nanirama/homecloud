@@ -90,10 +90,6 @@ return (
                </tbody>
             </table>
          </PriceTable>
-         <Button>
-            <Link to="/pricing" className="btn">
-            Go to Pricing</Link>
-         </Button>
       </Popup>
    </Modal.Body>
 </Modal>
@@ -157,11 +153,4 @@ margin-bottom: 20px;
   .table td a{
       text-decoration:underline;
   }
-`;
-const Button = styled.div`
-padding:24px;
-width:100%;
-.btn{
-    width:100%;
-}
 `;

@@ -4,6 +4,7 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 import BackgroundImage from 'gatsby-background-image'
 import styled from "styled-components";
+import SEO from "../components/seo"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -13,11 +14,19 @@ import { Link } from "gatsby"
 const PageTemplate = (props)=>{
     const { data } = props
     const { PageData } = data
-    console.log('Page Data',PageData.data.page_banner)
+
+    const title = PageData.data.meta_title ? PageData.data.meta_title : 'Home Cloud'
+    const desc = PageData.data.meta_description ? PageData.data.meta_description : 'Home Cloud Meta Desccription'
+
     const image = getImage(PageData.data.page_banner)
     const bgImage = convertToBgImage(image)
   return(
     <Layout>
+      <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       />
        <Wrapper>          
           <PageBanner>
           <BackgroundImage {...bgImage} preserveStackingContext className="pagebanner-bg">
@@ -57,6 +66,8 @@ query getPagesData($id: String!) {
     uid
     id
     data {
+      meta_title
+      meta_description
       title {
         html
         text

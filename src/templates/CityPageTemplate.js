@@ -4,10 +4,7 @@ import { graphql } from "gatsby";
 
 import Layout from "../components/layout"
 import DeserveSection from "../components/DeserveSection";
-// import SEO from '../components/SEO';
-// import Blog from '../components/blog';
-// import { Header } from '../components/Blog';
-// import styled from "styled-components";
+import SEO from "../components/seo"
 
 import Herosection from "../components/cityPages/Herosection";
 import Attractionssection from "../components/cityPages/Attractionssection";
@@ -22,6 +19,9 @@ import { BrowserView, TabletView, MobileView } from "react-device-detect"
 const CityPageTemplate = (props) => {
     const { data } = props
     const { PageData } = data
+
+    const title = PageData.data.meta_title ? PageData.data.meta_title : 'Home Cloud'
+    const desc = PageData.data.meta_description ? PageData.data.meta_description : 'Home Cloud Meta Desccription'
     //console.log('PageData', PageData)
     const { body } = PageData.data
     const benefits = body.filter((item)=>{
@@ -39,6 +39,11 @@ const CityPageTemplate = (props) => {
   if (!PageData) return null;
   return (
     <Layout page="home">
+      <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       />
       <Herosection data={PageData} features={cityFeatures && cityFeatures}/>
       {cityActivities && <Attractionssection data={cityActivities} />}
       {howItWorks && <Howitworksection data={howItWorks} />}
@@ -58,12 +63,19 @@ export const query = graphql`
         PageData : prismicCityLandingPages(uid: {eq: $id}) {
         id
         data {
+          meta_title
+          meta_description
             title {
             text
             html
             }
             sub_heading
             description
+            {
+              richText
+              html
+              text
+            }
             featured_image {
                 url(imgixParams: {width: 1800, q: 100})
             }
@@ -73,6 +85,11 @@ export const query = graphql`
                     slice_type
                     BenefitsHeading: primary {
                     description1
+                    {
+                      richText
+                      html
+                      text
+                    }
                     heading
                     }
                     items {

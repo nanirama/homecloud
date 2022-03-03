@@ -109,6 +109,7 @@ module.exports = {
         customTypesApiToken: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoibWFjaGluZTJtYWNoaW5lIiwiZGJpZCI6ImhvbWVjbG91ZC04MGQzM2Y5NC0yZGI1LTRjYzktYTU0ZC1mZmViNThlNjI1OWJfNCIsImRhdGUiOjE2NDA2NTk3MDgsImRvbWFpbiI6ImhvbWVjbG91ZCIsImlhdCI6MTY0MDY1OTcwOH0.F54AJbbl-6f4wFtvi7FpW5tPSssE4UoPmM_LshQ3QIw',
         schemas: {
           faq: require('./src/schemas/faq.json'),
+          page: require('./src/schemas/page.json'),
           an_unused_type: {},
         },
         lang: '*',

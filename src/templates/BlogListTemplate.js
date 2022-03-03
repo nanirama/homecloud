@@ -2,21 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
-// import SEO from '../components/SEO';
+import SEO from '../components/SEO';
 import BlogIndex from '../components/blog/BlogIndex';
 import DeserveSection from "../components/DeserveSection";
 //import Pagination from '../components/Pagination';
 
-const BlogListTemplate = ({ data, pageContext, path, location }) => {
+const BlogListTemplate = (props) => {
+  const { data, pageContext, path, location } = props
   const {
     allPrismicPost: { edges: blogsData },
   } = data;
 
- 
+  const title = 'Home Cloud Blog'
+  const desc = 'Home Cloud Meta Desccription'
 
   if (!blogsData) return null;
   return (
-    <Layout> 
+    <Layout>
+      <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       /> 
       <BlogIndex data={blogsData}/>   
       <DeserveSection/>
     </Layout>

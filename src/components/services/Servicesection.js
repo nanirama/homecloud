@@ -5,8 +5,6 @@ import { useStaticQuery, graphql, Link } from "gatsby"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { convertToBgImage } from "gbimage-bridge"
 
-
-
 const Servicesection = () => {
   const {
     ServiceBanner,
@@ -567,13 +565,6 @@ const BgChange = styled.div`
   background-size: 100% 100%;
   min-height: 500px;
   position: relative;
-  @media (max-width: 991px) {
-    min-height: 680px;
-  }
-  @media (max-width: 599px) {
-    padding: 40px 0;
-    min-height: 730px;
-  }
 
   &:before {
     content: "";
@@ -583,14 +574,13 @@ const BgChange = styled.div`
     background: linear-gradient(
       270deg,
       rgba(0, 0, 0, 0.684) 24.28%,
-      rgba(0, 0, 0, 0) 84.07%
-    );
+      rgba(0, 0, 0, 0) 84.07%);
     mix-blend-mode: normal;
     transform: matrix(-1, 0, 0, 1, 0, 0);
     width: 100%;
     height: 100%;
   }
-`
+`;
 const Wrapper = styled.div`
   content-visibility: auto;
   contain-intrinsic-size: 500px;
@@ -620,24 +610,7 @@ const Container = styled.div`
 `
 const ServiceBlock = styled.div`
   position: relative;
-
-  // @media (max-width: 991px) {
-  //   width: 85%;
-  //   margin: 0 auto;
-  // }
-  // @media only screen and (min-width: 901px) and (max-width: 991px) {
-  //   width: 75%;
-  // }
-  // @media only screen and (min-width: 801px) and (max-width: 901px) {
-  //   width: 80%;
-  // }
-  // @media (max-width: 767px) {
-  //   width: 94%;
-  // }
-  // @media (max-width: 550px) {
-  //   width: 100%;
-  // }
-`
+`;
 const ServBox = styled.div`
   position: absolute;
   display: flex;
@@ -663,21 +636,7 @@ const ServBox = styled.div`
       left: 15%;
       margin-top: 80px;
     }
-    // @media (max-width: 991px) {
-    //   margin-top: 280px;
-    //   left: 15%;
-    // }
-    // @media (max-width: 700px) {
-    //   margin-top: 250px;
-    //   left: 6%;
-    // }
-    // @media (max-width: 599px) {
-    //   margin-top: 300px;
-    //   left: 6%;
-    // }
-    // @media (max-width: 359px) {
-    //   left: 0%;
-    // }
+
   }
   &:nth-child(3) {
     left: 48%;
@@ -690,13 +649,7 @@ const ServBox = styled.div`
       left: 46%;
       margin-top: 140px;
     }
-    // @media (max-width: 991px) {
-    //   left: 5%;
-    //   margin-top: 0px;
-    // }
-    // @media (max-width: 700px) {
-    //   left: 0%;
-    // }
+ 
   }
   &:nth-child(4) {
     left: 78%;
@@ -711,33 +664,6 @@ const ServBox = styled.div`
     @media only screen and (min-width: 992px) and (max-width: 1100px) {
       left: 75%;
     }
-    // @media (max-width: 991px) {
-    //   left: 55%;
-    //   margin-top: 140px;
-    // }
-    // @media (max-width: 700px) {
-    //   left: 54%;
-    //   margin-top: 120px;
-    // }
-    // @media (max-width: 599px) {
-    //   left: 43%;
-    //   margin-top: 170px;
-    // }
-    // @media (max-width: 479px) {
-    //   left: 38%;
-    // }
-    // @media (max-width: 445px) {
-    //   left: 25%;
-    // }
-    // @media (max-width: 375px) {
-    //   left: 18%;
-    // }
-    // @media (max-width: 350px) {
-    //   left: 6%;
-    // }
-    // @media (max-width: 319px) {
-    //   left: 0%;
-    // }
   }
   p {
     color: #fff;
@@ -748,7 +674,7 @@ const ServBox = styled.div`
       float: right;
     }
   }
-`
+`;
 const Box = styled.div`
   background: rgba(0, 0, 0, 0.8);
   border-radius: 4px;
@@ -757,18 +683,10 @@ const Box = styled.div`
   @media only screen and (min-width: 992px) and (max-width: 1100px) {
     width:170px;
   }
-  // &:nth-child(2) {
-  //   @media (max-width: 330px) {
-  //     width: 160px;
-  //   }
-  //   @media (max-width: 315px) {
-  //     width: 150px;
-  //   }
-  // }
-`
+`;
 const Image = styled.span`
   margin-top: 45px;
-`
+`;
 const Title = styled.div`
   display: flex;
   flex-direction: row;
@@ -779,7 +697,7 @@ const Title = styled.div`
     font-size: 14px;
     padding-left: 10px;
   }
-`
+`;
 const Content = styled.div`
   position: absolute;
   bottom: 45px;

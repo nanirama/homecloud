@@ -28,26 +28,21 @@ function Seo({ description, lang, meta, title, location }) {
       }
     `
   )
-
+      console.log('Meta title', location)
   
   
   const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const defaultTitle = title ? title : site.siteMetadata.title
 
   const siteURL = site.siteMetadata.siteUrl 
   const siteLogo = siteURL+SiteLogo.publicURL;
   const metaImage = siteLogo
-
-  //const curl = siteURL+location || ''
-  //console.log('location', curl)
-
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={defaultTitle}
-      titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
           name: `description`,
@@ -55,7 +50,7 @@ function Seo({ description, lang, meta, title, location }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           property: `og:description`,
@@ -75,7 +70,7 @@ function Seo({ description, lang, meta, title, location }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           name: `twitter:description`,
@@ -83,9 +78,13 @@ function Seo({ description, lang, meta, title, location }) {
         },
       ].concat(meta)}
     >
+       <title>{defaultTitle}</title>
        <meta name="description" content={metaDescription} />
        {metaImage && <meta name="image" content={metaImage} />}
        {location && <link rel="canonical" href={`${location}`} />}
+       <link rel="preconnect" href="https://www.googletagmanager.com" />
+       <link rel="preconnect" href="https://js.intercomcdn.com" />
+       <link rel="preconnect" href="https://js.intercomcdn.com" />
       </Helmet>
   )
 }

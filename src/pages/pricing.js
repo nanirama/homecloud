@@ -1,5 +1,6 @@
 import * as React from "react"
 import { graphql } from "gatsby"
+import SEO from "../components/seo"
 import Layout from "../components/layout"
 import PricingSection from "../components/pricing/PricingSection";
 import DeserveSection from "../components/DeserveSection";
@@ -8,9 +9,17 @@ import DeserveSection from "../components/DeserveSection";
 const Pricing = (props) => {
   const { data } = props
   const { PageData } = data
+
+  const title = PageData.data.meta_title ? PageData.data.meta_title : 'Home Cloud'
+  const desc = PageData.data.meta_description ? PageData.data.meta_description : 'Home Cloud Meta Desccription'
   
     return(
     <Layout>
+      <SEO
+          title={title}
+          description={desc}
+          location = {props.location.href}
+       />
         <PricingSection data={PageData}/>
         <DeserveSection/>       
     </Layout>
@@ -20,6 +29,8 @@ export const query = graphql`
   query getPricingPageData {
     PageData: prismicPagesPricing {
       data {
+        meta_title
+        meta_description
         description {
           richText
         }

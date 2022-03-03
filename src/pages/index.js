@@ -21,8 +21,8 @@ const IndexPage = (props) => {
   const siteURL = site.siteMetadata.siteUrl 
   const siteLogo = siteURL+SiteLogo.publicURL;
 
-  const title = 'Home Cloud'
-  const desc = 'Home Cloud Meta Desccription'
+  const title = PageData.data.meta_title ? PageData.data.meta_title : 'Home Cloud'
+  const desc = PageData.data.meta_description ? PageData.data.meta_description : 'Home Cloud Meta Desccription'
 
   const { body } = PageData.data
   const benefits = body.filter((item)=>{
@@ -62,6 +62,8 @@ query getHomeData{
   PageData : prismicHome {
     id
     data {
+      meta_title
+      meta_description
       title {
         text
         html
